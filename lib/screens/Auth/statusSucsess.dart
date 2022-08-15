@@ -61,6 +61,7 @@ class _statusSucsessState extends State<statusSucsess> {
                         ),
                       ),
                       Spacer(),
+                      //
                       ButtonApp(
                         onTap: () {
                           Get.back();
