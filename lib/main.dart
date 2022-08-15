@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:takkah/screens/register_screens/register_screen.dart';
+import 'package:takkah/screens/register_screens/register_screens_meals.dart';
 import 'package:takkah/screens/splash/splash_screen.dart';
 
 void main() async {
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Tajawal',
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: RegisterScreen(),
+        home: RegisterScreenMeals(),
       ),
     );
   }

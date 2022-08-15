@@ -27,6 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 50.h,
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),

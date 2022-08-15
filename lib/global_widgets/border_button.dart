@@ -7,10 +7,14 @@ import '../uitls/app_colors.dart';
 class BorderButton extends StatelessWidget {
   IconData icon;
   String text;
+  Color? borderColor;
   Function() onPressed;
 
   BorderButton(
-      {required this.icon, required this.text, required this.onPressed});
+      {required this.icon,
+      required this.text,
+      required this.onPressed,
+      this.borderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,9 @@ class BorderButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(7.r),
             ),
-            side: BorderSide(color: AppColors.tkborder, width: 1),
+            side: BorderSide(
+                color: borderColor != null ? borderColor! : AppColors.tkborder,
+                width: 1),
             primary: Colors.transparent,
             onPrimary: Colors.transparent,
             shadowColor: Colors.transparent,
@@ -33,7 +39,9 @@ class BorderButton extends StatelessWidget {
               width: 10.w,
               child: Icon(
                 icon,
-                color: AppColors.tkText.withOpacity(0.5),
+                color: borderColor != null
+                    ? borderColor!
+                    : AppColors.tkText.withOpacity(0.5),
                 size: 24.sp,
               ),
             ),
@@ -41,7 +49,7 @@ class BorderButton extends StatelessWidget {
             TextCustom(
               text: text,
               fontSize: 14,
-              color: AppColors.tkText,
+              color: borderColor != null ? borderColor! : AppColors.tkText,
             ),
             SizedBox(width: 10.w),
           ],
