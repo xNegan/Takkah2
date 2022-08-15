@@ -6,7 +6,10 @@ import 'package:takkah/global_widgets/next_button.dart';
 import 'package:takkah/global_widgets/text_custom.dart';
 import 'package:takkah/uitls/app_colors.dart';
 
+import '../../global_widgets/ButtonApp.dart';
+import '../../global_widgets/TitleBox.dart';
 import '../../global_widgets/border_button.dart';
+import '../../global_widgets/text_field.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
@@ -203,27 +206,42 @@ OutlineInputBorder get border {
 }
 void openBottomSheet() {
   Get.bottomSheet(
-    Column(
-      children: [
-        const SizedBox(height: 20),
-        const Center(
-          child: Text(
-            'Bottom Sheet',
-            style: TextStyle(fontSize: 18),
-          ),
+    Padding(
+      padding:  EdgeInsets.all(15.sp),
+      child: SizedBox(
+        height: 400.h,
+        child: Column(
+          children: [
+            Row(children: [
+              Spacer(),
+              TextCustom(text: 'اضافة قسم',color: AppColors.blackColor,fontSize: 18.sp,fontWeight: FontWeight.bold,),
+              Spacer(),
+              InkWell(
+                  onTap: (){ Get.back();},
+                  child: Icon(Icons.close)),
+            ],),
+            SizedBox(height: 80.h,),
+            TextFieldCustom(
+              textInputType: TextInputType.text,
+              textHint: 'اسم القسم',
+              hintColor: AppColors.blackColor,
+            ),
+            SizedBox(height: 100.h,),
+            ButtonApp(
+              onTap: () {
+               Get.back();
+              },
+              title: 'حفظ',
+            )
+
+          ],
         ),
-        OutlinedButton(
-          onPressed: () {
-            Get.back();
-          },
-          child: const Text('Close'),
-        ),
-      ],
+      ),
     ),
     backgroundColor: Colors.white,
     elevation: 0,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
     ),
   );
 }
