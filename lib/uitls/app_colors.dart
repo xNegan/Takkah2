@@ -21,7 +21,8 @@ class AppColors {
   /////////////
 
   static const noColor = Colors.transparent;
-  static const fontColor = Color(0xff45255B);
+  static const fontColor = Color(0xff7C7C7C);
+  static const fontTitleColor = Color(0xff434858);
   static const whiteColor = Color(0xffFFFFFF);
   static const mainText = Color(0xff516091);
 

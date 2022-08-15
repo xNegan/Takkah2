@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:takkah/screens/Auth/statusAcoount.dart';
 import '../../global_widgets/ButtonApp.dart';
 import '../../global_widgets/text_custom.dart';
 import '../../global_widgets/text_field.dart';
@@ -75,7 +76,9 @@ class _valditeScreenState extends State<valditeScreen> {
                                   height: 100.h,
                                 ),
                                 ButtonApp(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Get.to(StatusAcount());
+                                  },
                                   title: 'تحقق',
                                 )
                               ],

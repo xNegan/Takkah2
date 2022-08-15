@@ -12,6 +12,7 @@ class TitleBoxRow extends StatelessWidget {
   final bool showCounter;
   final String textHint;
   final  Function()? arabicTap;
+  final  Function()? ontap;
   final Function()? englishTap;
   final bool arabicEnglish;
   final bool isReadOnly;
@@ -23,7 +24,7 @@ class TitleBoxRow extends StatelessWidget {
   FormFieldValidator<String>? validator;
 
 
-  TitleBoxRow({this.isAddress=false,required this.isNote,this.controllerText,this.isReadOnly = true,required this.title, this.lineMax = 1, this.showCounter= true, this.textHint='', this.arabicTap, this.englishTap,this.arabicEnglish=false,this.validator,this.isNum=false,this.isPhone=false,this.isEmail=false});
+  TitleBoxRow({this.isAddress=false,required this.isNote,this.controllerText,this.isReadOnly = true,required this.title, this.lineMax = 1, this.showCounter= true, this.textHint='', this.arabicTap,this.ontap, this.englishTap,this.arabicEnglish=false,this.validator,this.isNum=false,this.isPhone=false,this.isEmail=false});
 
 
   @override
@@ -37,7 +38,7 @@ class TitleBoxRow extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextCustom(text: title,fontSize: 16,color:AppColors.fontColor,fontWeight: FontWeight.w400),
+                TextCustom(text: title,fontSize: 14,color:AppColors.fontColor,fontWeight: FontWeight.w400),
                 Visibility(
                   visible: arabicEnglish,
                   child: Row(
@@ -64,12 +65,11 @@ class TitleBoxRow extends StatelessWidget {
           ),
           isNote?
           Container(
-
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-                color: AppColors.noColor,
-                borderRadius: BorderRadius.circular(24.r),
-                border: Border.all(color: AppColors.fontColor.withOpacity(0.5))
+          height: 55.h,
+          decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          border: Border.all(color:Colors.grey.shade300),
             ),
             child:TextFormField(
               validator: validator,
@@ -151,15 +151,14 @@ class TitleBoxRow extends StatelessWidget {
             // ),
           ):
           Container(
-              height: 40.h,
-            clipBehavior: Clip.antiAlias,
+            height: 55.h,
             decoration: BoxDecoration(
-              color: AppColors.noColor,
-              borderRadius: BorderRadius.circular(24.r),
-                border: Border.all(color: AppColors.fontColor.withOpacity(0.5))
-            ),
+              color: Colors.transparent,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              border: Border.all(color:Colors.grey.shade300),),
             child:
             TextFormField(
+              onTap:ontap,
               validator: validator,
               controller: controllerText,
               readOnly: isReadOnly,
@@ -177,6 +176,11 @@ class TitleBoxRow extends StatelessWidget {
               ),
               maxLines: lineMax,
               decoration: InputDecoration(
+                suffixIcon: Align(
+                    widthFactor: 1.0,
+                    heightFactor: 1.0,
+                    child: Icon(Icons.arrow_drop_down_sharp,color: Colors.grey,)
+                ),
                 fillColor: Colors.transparent,
                 filled: true,
                 hintText: textHint,

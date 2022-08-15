@@ -12,16 +12,14 @@ import '../../global_widgets/text_custom.dart';
 import '../../global_widgets/text_field.dart';
 import '../../uitls/app_colors.dart';
 
-import 'Login.dart';
-import 'createAcount.dart';
 import 'createAcount2.dart';
 
-class createAcount extends StatefulWidget {
+class createAcount2 extends StatefulWidget {
   @override
-  _createAcountState createState() => _createAcountState();
+  _createAcount2State createState() => _createAcount2State();
 }
 
-class _createAcountState extends State<createAcount> {
+class _createAcount2State extends State<createAcount2> {
   final TextEditingController link = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -66,33 +64,25 @@ class _createAcountState extends State<createAcount> {
                                 borderRadius:
                                 BorderRadius.all(Radius.circular(30))),
                             child: ListView(
-                              // crossAxisAlignment: CrossAxisAlignment.start,
+                             // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                TextCustom(
-                                  text: 'إنشاء حساب',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                SizedBox(
-                                  height: 21.h,
-                                ),
                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
+                                    TextCustom(
+                                      text: 'إنشاء حساب',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                     InkWell(
                                       onTap:(){
-                                        Get.to(Login());
+                                        Get.back();
                                       },
                                       child: TextCustom(
-                                        text: 'تسجيل دخول!',
-                                        fontSize: 12,
-                                        color: AppColors.maincolor,
-                                        fontWeight: FontWeight.w500,
+                                        text: 'رجوع',
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
                                       ),
-                                    ),
-                                    TextCustom(
-                                      text: 'ليس لديك حساب؟',
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
                                     ),
                                   ],
                                 ),
@@ -102,26 +92,13 @@ class _createAcountState extends State<createAcount> {
                                 ),
                                 TextFieldCustom(
                                   textInputType: TextInputType.text,
-                                  textHint: 'اسم صاحب المؤسسه',
-                                  hintColor: AppColors.blackColor,
-                                ),
-
-                                SizedBox(height: 10,),
-                                TextFieldCustom(
-                                  textInputType: TextInputType.text,
-                                  textHint: 'اسم المتجر',
+                                  textHint: 'تاريخ بداية السجل التجاري',
                                   hintColor: AppColors.blackColor,
                                 ),
                                 SizedBox(height: 10,),
                                 TextFieldCustom(
                                   textInputType: TextInputType.text,
-                                  textHint: 'البريد الألكتروني للمتجر',
-                                  hintColor: AppColors.blackColor,
-                                ),
-                                SizedBox(height: 10,),
-                                TextFieldCustom(
-                                  textInputType: TextInputType.text,
-                                  textHint: 'رقم الجوال',
+                                  textHint: 'تاريخ نهاية السجل التجاري',
                                   hintColor: AppColors.blackColor,
                                 ),
                                 SizedBox(height: 10,),
@@ -131,20 +108,61 @@ class _createAcountState extends State<createAcount> {
                                   },
                                   readOnly: true,
                                   textInputType: TextInputType.text,
-                                  textHint: 'الشعار',
+                                  textHint: 'صورة السجل التجاري',
                                   hintColor: AppColors.blackColor,
                                   suffixWid: Icon(Icons.add_a_photo),
                                 ),
                                 SizedBox(height: 10,),
+                                Divider(),
+                                TitleBoxRow(isNote: false,title: 'نوع المتجر',ontap: (){print("object");}),
+                                CheckboxListTile(
+                                  value: false,
+                                  activeColor: AppColors.blackColor,
+                                  contentPadding: EdgeInsets.zero,
+                                  controlAffinity:
+                                  ListTileControlAffinity.leading,
+                                  onChanged: (value) {
 
+                                  },
+                                  title: Wrap(
+                                    children: [
+                                      TextCustom(
+                                        text:
+                                        'لقد قرأت',
+                                        fontSize: 12,
+                                        color: AppColors.fontColor,
+                                      ),
+                                      InkWell(
+                                        onTap: (){},
+                                        child: TextCustom(
+                                          text:
+                                          'الشروط',
+                                          fontSize: 12,
+                                          color: AppColors.fontColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: (){},
+                                        child: TextCustom(
+                                          text:
+                                          'والأحكام',
+                                          fontSize: 12,
+                                          color: AppColors.fontColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 SizedBox(
-                                  height: 30.h,
+                                  height: 45.h,
                                 ),
                                 ButtonApp(
                                   onTap: () {
-                                    Get.to(createAcount2());
+                                    Get.to(valditeScreen());
                                   },
-                                  title: 'التالي',
+                                  title: 'ارسل',
                                 )
                               ],
                             ),
@@ -156,5 +174,4 @@ class _createAcountState extends State<createAcount> {
             )));
   }
 }
-
 
