@@ -32,73 +32,76 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 34.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Image.asset(
-                  'images/beak.png',
-                  height: 40.h,
-                ),
-                SizedBox(width: 10.w),
-                TextCustom(
-                    text: 'مطعم البيك',
-                    fontSize: 14,
-                    color: AppColors.tkText,
-                    fontWeight: FontWeight.bold),
-              ],
-            ),
-            SizedBox(height: 17.h),
-            TextCustom(
-              text: 'التصنيف',
-              fontSize: 14,
-              color: AppColors.tkText,
-            ),
-            SizedBox(height: 15.h),
-            _builddropDownMenu(),
-            SizedBox(height: 15.h),
-            TextCustom(
-              text: 'معلومات عن المتجر',
-              fontSize: 14,
-              color: AppColors.tkText,
-            ),
-            SizedBox(height: 16.h),
-            _builldInfoContainer(),
-            SizedBox(height: 16.h),
-            BorderButton(
-                onPressed: () {},
-                icon: Icons.add_location_outlined,
-                text: 'اضف فرع'),
-            SizedBox(height: 15.h),
-            TextCustom(
-              text: 'صور المتجر',
-              fontSize: 14,
-              color: AppColors.tkText,
-            ),
-            SizedBox(height: 16.h),
-            imageButton(onPressed: () {}),
-            SizedBox(height: 16.h),
-            TextCustom(
-              text: 'المنيو المصور (اختياري)',
-              fontSize: 14,
-              color: AppColors.tkText,
-            ),
-            SizedBox(height: 16.h),
-            imageButton(onPressed: () {}),
-            SizedBox(height: 16.h),
-            TextCustom(
-              text: 'الاقسام',
-              fontSize: 14,
-              color: AppColors.tkText,
-            ),
-            BorderButton(
-                icon: Icons.add_box_outlined,
-                text: 'اضف قسم',
-                onPressed: () {}),
-            SizedBox(height: 45.h),
-            NextButton(text: 'التالي', onPressed: () {}),
-          ],
+        child: SingleChildScrollView(
+          reverse: true,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Image.asset(
+                    'images/beak.png',
+                    height: 40.h,
+                  ),
+                  SizedBox(width: 10.w),
+                  TextCustom(
+                      text: 'مطعم البيك',
+                      fontSize: 14,
+                      color: AppColors.tkText,
+                      fontWeight: FontWeight.bold),
+                ],
+              ),
+              SizedBox(height: 17.h),
+              TextCustom(
+                text: 'التصنيف',
+                fontSize: 14,
+                color: AppColors.tkText,
+              ),
+              SizedBox(height: 15.h),
+              _builddropDownMenu(),
+              SizedBox(height: 15.h),
+              TextCustom(
+                text: 'معلومات عن المتجر',
+                fontSize: 14,
+                color: AppColors.tkText,
+              ),
+              SizedBox(height: 16.h),
+              _builldInfoContainer(),
+              SizedBox(height: 16.h),
+              BorderButton(
+                  onPressed: () {},
+                  icon: Icons.add_location_outlined,
+                  text: 'اضف فرع'),
+              SizedBox(height: 15.h),
+              TextCustom(
+                text: 'صور المتجر',
+                fontSize: 14,
+                color: AppColors.tkText,
+              ),
+              SizedBox(height: 16.h),
+              imageButton(onPressed: () {}),
+              SizedBox(height: 16.h),
+              TextCustom(
+                text: 'المنيو المصور (اختياري)',
+                fontSize: 14,
+                color: AppColors.tkText,
+              ),
+              SizedBox(height: 16.h),
+              imageButton(onPressed: () {}),
+              SizedBox(height: 16.h),
+              TextCustom(
+                text: 'الاقسام',
+                fontSize: 14,
+                color: AppColors.tkText,
+              ),
+              BorderButton(
+                  icon: Icons.add_box_outlined,
+                  text: 'اضف قسم',
+                  onPressed: () {}),
+              SizedBox(height: 45.h),
+              NextButton(text: 'التالي', onPressed: () {}),
+            ],
+          ),
         ),
       ),
     );
