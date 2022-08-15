@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:takkah/global_widgets/next_button.dart';
 import 'package:takkah/global_widgets/text_custom.dart';
 import 'package:takkah/uitls/app_colors.dart';
@@ -97,7 +99,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               BorderButton(
                   icon: Icons.add_box_outlined,
                   text: 'اضف قسم',
-                  onPressed: () {}),
+                  onPressed: () {
+                    openBottomSheet();
+                  }),
               SizedBox(height: 45.h),
               NextButton(text: 'التالي', onPressed: () {}),
             ],
@@ -196,4 +200,30 @@ OutlineInputBorder get border {
       gapPadding: 0,
       borderRadius: BorderRadius.circular(50.r),
       borderSide: const BorderSide(width: 2, color: AppColors.tkborder));
+}
+void openBottomSheet() {
+  Get.bottomSheet(
+    Column(
+      children: [
+        const SizedBox(height: 20),
+        const Center(
+          child: Text(
+            'Bottom Sheet',
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+        OutlinedButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: const Text('Close'),
+        ),
+      ],
+    ),
+    backgroundColor: Colors.white,
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+  );
 }

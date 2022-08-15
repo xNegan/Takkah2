@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 
 import '../../global_widgets/ButtonApp.dart';
 import '../../global_widgets/text_custom.dart';
 import '../../uitls/app_colors.dart';
+import '../register_screens/register_screen.dart';
 import 'Login.dart';
 
 class statusSucsess extends StatefulWidget {
@@ -64,7 +67,36 @@ class _statusSucsessState extends State<statusSucsess> {
                       //]jbfjhdsf
                       ButtonApp(
                         onTap: () {
-                          Get.back();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PlacePicker(
+                                // apiKey:  "AIzaSyDrTiLARexSQDjbyPA1qwwDK-DCLu4l4mc",
+                                apiKey: "AIzaSyBw24W-zvipTztLpP14gibuLXrci-8ken0",
+                                onPlacePicked: (result) {
+                                  print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                                  print(result.formattedAddress);
+                                  print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                                  Navigator.of(context).pop();
+                                  Get.to(RegisterScreen());
+
+
+                                  // navigateTo(
+                                  //     context,
+                                  //     ChooseGovern(
+                                  //       passed: [
+                                  //         result.formattedAddress.toString(),
+                                  //         result.geometry.location.lat.toString(),
+                                  //         result.geometry.location.lng.toString()
+                                  //       ],
+                                  //     ));
+                                },
+                                initialPosition: LatLng(0, 0),
+                                useCurrentLocation: true,
+                                usePlaceDetailSearch: true,
+                              ),
+                            ),
+                          );
                         },
                         title: 'اختيار الموقع الجغرافي',
                       )

@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
                           ),
                           Container(
                             width: context.width,
-                            height: 550.h,
+                            height: 800.h,
                             margin: EdgeInsets.only(
                                 bottom: 10.h,
                                 left: 10.w,
