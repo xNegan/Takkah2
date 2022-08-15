@@ -14,6 +14,7 @@ import '../../global_widgets/text_field.dart';
 import '../../uitls/app_colors.dart';
 
 import 'createAcount.dart';
+import 'createAcount2.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -39,9 +40,8 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                   ),
-                  child: SingleChildScrollView(
-                    reverse: true,
-                    child: Center(
+                  child: Center(
+                    child: SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -78,11 +78,16 @@ class _LoginState extends State<Login> {
                                 ),
                                 Row(
                                   children: [
-                                    TextCustom(
-                                      text: 'انشاء حساب! ',
-                                      fontSize: 12,
-                                      color: AppColors.maincolor,
-                                      fontWeight: FontWeight.w500,
+                                    InkWell(
+                                         onTap:(){
+                                           Get.to(createAcount());
+                                         },
+                                      child: TextCustom(
+                                        text: 'انشاء حساب! ',
+                                        fontSize: 12,
+                                        color: AppColors.maincolor,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                     TextCustom(
                                       text: 'ليس لديك حساب؟',

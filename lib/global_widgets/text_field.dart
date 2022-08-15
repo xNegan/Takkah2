@@ -57,73 +57,118 @@ class TextFieldCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60.h,
+      height: 55.h,
       decoration: BoxDecoration(
-
+        color: Colors.transparent,
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        border: Border.all(color:AppColors.grayColor),),
-      child: TextFormField(
+        border: Border.all(color:Colors.grey.shade300),),
+      child:  TextFormField(
+        validator: validate,
+        onTap: onTap,
+        controller: controller,
+        readOnly: readOnly,
         toolbarOptions: const ToolbarOptions(
           copy: true,
           cut: true,
           paste: true,
           selectAll: true,
         ),
-        onTap: onTap,
-        cursorHeight: 16.h,
-        cursorColor: textColor,
-        readOnly: readOnly,
-        onChanged: onChanged,
-        focusNode: textFocusNode,
-        onFieldSubmitted: onSubmit,
-        validator: validate,
+        keyboardType:textInputType,
         style: TextStyle(
-          fontFamily: 'Tajawal',
-          fontWeight: FontWeight.w500,
-          color: textColor,
-          fontSize: 14.sp
+          fontFamily: 'Poppins',
+          fontSize: 14.sp,
+          color: AppColors.blackColor,
         ),
-        controller: controller,
-        keyboardType: textInputType,
-        obscureText: obscureText,
         maxLines: maxLine,
-        minLines: 1,
-        // expands: true,
-        maxLength: maxLength,
-        textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
-          counter: Text(''),
-          // suffix: suffixWid,
-           suffixIcon: InkWell(onTap: lockOnTap, child: suffixWid),
-          prefixIcon: prefixWid,
+          suffixIcon: Align(
+            widthFactor: 1.0,
+            heightFactor: 1.0,
+            child: suffixWid
+          ),
+          fillColor: Colors.transparent,
+          filled: true,
           hintText: textHint,
           hintStyle: TextStyle(
-            fontFamily: 'Tajawal',
-            fontSize: 14.sp,
-            color: hintColor,
+            fontFamily: 'Poppins',
+            fontSize: 13.sp,
+            color: AppColors.lGray,
           ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 24.h),
-          errorStyle: TextStyle(
-            color: AppColors.whiteColor,
-            fontFamily: 'Tajawal',
+          contentPadding: EdgeInsets.symmetric(
+              horizontal: 16.w, vertical: 12.h),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(24.r),
+            borderSide: BorderSide.none,
           ),
-          // errorBorder: UnderlineInputBorder(
-          //   borderSide: BorderSide(
-          //     color: AppColors.whiteColor
-          //   )
-          // ),
-          enabledBorder:const UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.whiteColor
-            )
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(24.r),
+            borderSide: BorderSide.none,
           ),
-          focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                  color: AppColors.whiteColor
-              )
-          ),
+          errorBorder: InputBorder.none,
         ),
       ),
+      // child: TextFormField(
+      //   toolbarOptions: const ToolbarOptions(
+      //     copy: true,
+      //     cut: true,
+      //     paste: true,
+      //     selectAll: true,
+      //   ),
+      //   onTap: onTap,
+      //   cursorHeight: 16.h,
+      //   cursorColor: textColor,
+      //   readOnly: readOnly,
+      //   onChanged: onChanged,
+      //   focusNode: textFocusNode,
+      //   onFieldSubmitted: onSubmit,
+      //   validator: validate,
+      //   style: TextStyle(
+      //     fontFamily: 'Tajawal',
+      //     fontWeight: FontWeight.w500,
+      //     color: textColor,
+      //     fontSize: 14.sp
+      //   ),
+      //   controller: controller,
+      //   keyboardType: textInputType,
+      //   obscureText: obscureText,
+      //   maxLines: maxLine,
+      //   minLines: 1,
+      //   // expands: true,
+      //   maxLength: maxLength,
+      //   textAlignVertical: TextAlignVertical.center,
+      //   decoration: InputDecoration(
+      //     counter: Text(''),
+      //     // suffix: suffixWid,
+      //      suffixIcon: InkWell(onTap: lockOnTap, child: suffixWid),
+      //     prefixIcon: prefixWid,
+      //     hintText: textHint,
+      //     hintStyle: TextStyle(
+      //       fontFamily: 'Tajawal',
+      //       fontSize: 14.sp,
+      //       color: hintColor,
+      //     ),
+      //     contentPadding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 24.h),
+      //     errorStyle: TextStyle(
+      //       color: AppColors.whiteColor,
+      //       fontFamily: 'Tajawal',
+      //     ),
+      //     // errorBorder: UnderlineInputBorder(
+      //     //   borderSide: BorderSide(
+      //     //     color: AppColors.whiteColor
+      //     //   )
+      //     // ),
+      //     enabledBorder:const UnderlineInputBorder(
+      //       borderSide: BorderSide(
+      //         color: AppColors.whiteColor
+      //       )
+      //     ),
+      //     focusedBorder: const UnderlineInputBorder(
+      //         borderSide: BorderSide(
+      //             color: AppColors.whiteColor
+      //         )
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
