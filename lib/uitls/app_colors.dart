@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const maincolor = Color(0xFFFA7B21);
+  static const tkGreytxt = Color(0xFF707070);
+  static const tkborder = Color(0xFFE8E8E8);
+  static const tkText = Color(0xFFB9B9B9);
+
   ////////////////////
   static const purpleBasic = Color(0xff7C45A3);
-  static  const purpleBasicWithOpcity = Color(0xff7C45A3);
-  static  const gradientButtonSecondColorWithOpcity = Color(0xffC0AACF);
+  static const purpleBasicWithOpcity = Color(0xff7C45A3);
+  static const gradientButtonSecondColorWithOpcity = Color(0xffC0AACF);
   static const gradientButtonSecondColor = Color(0xffB51CDC);
   static const borderPurple = Color(0xffB57EDC);
 
