@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:takkah/screens/register_screens/register_screen.dart';
 import 'package:takkah/screens/splash/splash_screen.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
+      designSize: Size(428, 1156),
       builder: (BuildContext context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
@@ -44,10 +44,9 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
           fontFamily: 'Tajawal',
-          scaffoldBackgroundColor: Colors.transparent,
+          scaffoldBackgroundColor: Colors.white,
         ),
         home: SplashScreen(),
-
       ),
     );
   }
