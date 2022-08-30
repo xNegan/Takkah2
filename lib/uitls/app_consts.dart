@@ -7,10 +7,136 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:takkah/uitls/storage_getX.dart';
 
+import '../global_widgets/text_custom.dart';
 import 'app_colors.dart';
 
 const manImage = 'https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?size=626&ext=jpg&ga=GA1.2.1550139938.1639094400';
+void showDialogConform(
+    {required String Title, Function()? conform, Function()? cancel}) {
+  if (Platform.isAndroid) {
+    Get.dialog(
+      AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextCustom(
+              text: Title,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              // color: AppColors.mainYellow,
+            ),
+            SizedBox(
+              height: 80.h,
+            ),
+            Container(
+              decoration: new BoxDecoration(
+                //  color: Colors.green,
+                  borderRadius: new BorderRadius.all(Radius.circular(50))),
+              child:
+              //TextCustom(text: "؟",fontSize: 100,)
+              Icon(
+                Icons.warning,
+                size: 80,
+                color: AppColors.redColor,
+              ),
+            ),
 
+            SizedBox(
+              height: 80.h,
+            ),
+            Row(
+              children: [
+                InkWell(
+                  onTap: conform,
+                  child:  Container(
+                    width: 130.w,
+                    height: 50.h,
+                    decoration: new BoxDecoration(
+                        color: AppColors.maincolor,
+                        borderRadius:
+                        new BorderRadius.all(Radius.circular(10))),
+                    child: Center(
+                      child: TextCustom(
+                        text: "نعم",
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(width: 20.w,),
+                InkWell(
+                  onTap: cancel,
+                  child: Container(
+                    width: 130.w,
+                    height: 50.h,
+                    decoration: new BoxDecoration(
+                        color: AppColors.whiteColor,
+                        border: Border.all(color: AppColors.maincolor),
+                        borderRadius:
+                        new BorderRadius.all(Radius.circular(10))),
+                    child: Center(
+                      child: TextCustom(
+                        text: "لا",
+                        color: AppColors.maincolor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30.0))),
+      ),
+    );
+  } else {
+    Get.dialog(CupertinoAlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: new BoxDecoration(
+                //  color: Colors.green,
+                  borderRadius: new BorderRadius.all(Radius.circular(50))),
+              child: Icon(
+                Icons.clear,
+                size: 80,
+                color: AppColors.redColor,
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            TextCustom(
+              text: Title,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              // color: AppColors.mainYellow,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: TextCustom(
+                text: 'Ok',
+                color: AppColors.redColor,
+              ))
+        ]));
+  }
+}
  Future<void> checkApi(var response) async {
 if(response.statusCode == 401) {
   await StorageGetX().logout();

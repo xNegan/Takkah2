@@ -38,6 +38,7 @@ dependencies:
   url_launcher: ^6.0.17
   get: ^4.6.1
   get_storage: ^2.0.3
+  flutter_rating_bar: ^4.0.1
   flutter_svg: ^1.1.1+1
   google_maps_place_picker_mb: ^2.0.0-mb.13
   camera: ^0.9.4+2

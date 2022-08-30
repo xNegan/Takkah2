@@ -9,11 +9,13 @@ class ButtonApp extends StatelessWidget {
   final Function() onTap;
   double width;
   double heigh;
+  bool isBLack;
 
   ButtonApp(
       {required this.title,
       required this.onTap,
       this.width = 330,
+      this.isBLack=false,
       this.heigh = 55});
 
   @override
@@ -23,18 +25,14 @@ class ButtonApp extends StatelessWidget {
       //margin: EdgeInsetsDirectional.only(start: 50.w, end: 50.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-        color: AppColors.blackColor
+       // color: isBLack?AppColors.blackColor:AppColors.maincolor
 
       ),
       child: ElevatedButton(
           style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.r),
-              ),
-            ),
+
             minimumSize: MaterialStateProperty.all(Size(width.w, heigh.h)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            backgroundColor: MaterialStateProperty.all(!isBLack?AppColors.blackColor:AppColors.maincolor),
           ),
           onPressed: onTap,
           child: TextCustom(

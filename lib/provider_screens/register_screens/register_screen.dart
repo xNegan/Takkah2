@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:takkah/global_widgets/next_button.dart';
 import 'package:takkah/global_widgets/text_custom.dart';
+import 'package:takkah/provider_screens/register_screens/register_screens_meals.dart';
 import 'package:takkah/uitls/app_colors.dart';
 
 import '../../global_widgets/ButtonApp.dart';
@@ -107,7 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     openBottomSheet();
                   }),
               SizedBox(height: 45.h),
-              NextButton(text: 'التالي', onPressed: () {}),
+              NextButton(text: 'التالي', onPressed: () {Get.to(RegisterScreenMeals());}),
             ],
           ),
         ),
