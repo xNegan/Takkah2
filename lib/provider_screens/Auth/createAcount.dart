@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:takkah/screens/Auth/valditeScreen.dart';
+import 'package:takkah/provider_screens/Auth/valditeScreen.dart';
 
 import '../../global_widgets/ButtonApp.dart';
 
@@ -64,7 +64,7 @@ class _createAcountState extends State<createAcount> {
                             decoration: BoxDecoration(
                                 color: AppColors.whiteColor,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                    BorderRadius.all(Radius.circular(30))),
                             child: ListView(
                               // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -79,7 +79,7 @@ class _createAcountState extends State<createAcount> {
                                 Row(
                                   children: [
                                     InkWell(
-                                      onTap:(){
+                                      onTap: () {
                                         Get.to(Login());
                                       },
                                       child: TextCustom(
@@ -96,7 +96,6 @@ class _createAcountState extends State<createAcount> {
                                     ),
                                   ],
                                 ),
-
                                 SizedBox(
                                   height: 41.h,
                                 ),
@@ -105,28 +104,35 @@ class _createAcountState extends State<createAcount> {
                                   textHint: 'اسم صاحب المؤسسه',
                                   hintColor: AppColors.blackColor,
                                 ),
-
-                                SizedBox(height: 10,),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 TextFieldCustom(
                                   textInputType: TextInputType.text,
                                   textHint: 'اسم المتجر',
                                   hintColor: AppColors.blackColor,
                                 ),
-                                SizedBox(height: 10,),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 TextFieldCustom(
                                   textInputType: TextInputType.text,
                                   textHint: 'البريد الألكتروني للمتجر',
                                   hintColor: AppColors.blackColor,
                                 ),
-                                SizedBox(height: 10,),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 TextFieldCustom(
                                   textInputType: TextInputType.text,
                                   textHint: 'رقم الجوال',
                                   hintColor: AppColors.blackColor,
                                 ),
-                                SizedBox(height: 10,),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 TextFieldCustom(
-                                  onTap: (){
+                                  onTap: () {
                                     print("object");
                                   },
                                   readOnly: true,
@@ -135,8 +141,9 @@ class _createAcountState extends State<createAcount> {
                                   hintColor: AppColors.blackColor,
                                   suffixWid: Icon(Icons.add_a_photo),
                                 ),
-                                SizedBox(height: 10,),
-
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 SizedBox(
                                   height: 30.h,
                                 ),
@@ -156,5 +163,3 @@ class _createAcountState extends State<createAcount> {
             )));
   }
 }
-
-

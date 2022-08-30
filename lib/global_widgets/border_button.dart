@@ -29,7 +29,7 @@ class BorderButton extends StatelessWidget {
                 color: borderColor != null ? borderColor! : AppColors.tkborder,
                 width: 1),
             primary: Colors.transparent,
-            onPrimary: Colors.transparent,
+            onPrimary: AppColors.maincolor,
             shadowColor: Colors.transparent,
             elevation: 0),
         child: Row(
