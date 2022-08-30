@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:takkah/screens/Auth/valditeScreen.dart';
+import 'package:takkah/provider_screens/Auth/valditeScreen.dart';
 
 import '../../global_widgets/ButtonApp.dart';
 
@@ -62,12 +62,13 @@ class _createAcount2State extends State<createAcount2> {
                             decoration: BoxDecoration(
                                 color: AppColors.whiteColor,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(30))),
+                                    BorderRadius.all(Radius.circular(30))),
                             child: ListView(
-                             // crossAxisAlignment: CrossAxisAlignment.start,
+                              // crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     TextCustom(
                                       text: 'إنشاء حساب',
@@ -75,7 +76,7 @@ class _createAcount2State extends State<createAcount2> {
                                       fontWeight: FontWeight.w600,
                                     ),
                                     InkWell(
-                                      onTap:(){
+                                      onTap: () {
                                         Get.back();
                                       },
                                       child: TextCustom(
@@ -86,7 +87,6 @@ class _createAcount2State extends State<createAcount2> {
                                     ),
                                   ],
                                 ),
-
                                 SizedBox(
                                   height: 41.h,
                                 ),
@@ -95,15 +95,19 @@ class _createAcount2State extends State<createAcount2> {
                                   textHint: 'تاريخ بداية السجل التجاري',
                                   hintColor: AppColors.blackColor,
                                 ),
-                                SizedBox(height: 10,),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 TextFieldCustom(
                                   textInputType: TextInputType.text,
                                   textHint: 'تاريخ نهاية السجل التجاري',
                                   hintColor: AppColors.blackColor,
                                 ),
-                                SizedBox(height: 10,),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 TextFieldCustom(
-                                  onTap: (){
+                                  onTap: () {
                                     print("object");
                                   },
                                   readOnly: true,
@@ -112,41 +116,43 @@ class _createAcount2State extends State<createAcount2> {
                                   hintColor: AppColors.blackColor,
                                   suffixWid: Icon(Icons.add_a_photo),
                                 ),
-                                SizedBox(height: 10,),
+                                SizedBox(
+                                  height: 10,
+                                ),
                                 Divider(),
-                                TitleBoxRow(isNote: false,title: 'نوع المتجر',ontap: (){print("object");}),
+                                TitleBoxRow(
+                                    isNote: false,
+                                    title: 'نوع المتجر',
+                                    ontap: () {
+                                      print("object");
+                                    }),
                                 CheckboxListTile(
                                   value: false,
                                   activeColor: AppColors.blackColor,
                                   contentPadding: EdgeInsets.zero,
                                   controlAffinity:
-                                  ListTileControlAffinity.leading,
-                                  onChanged: (value) {
-
-                                  },
+                                      ListTileControlAffinity.leading,
+                                  onChanged: (value) {},
                                   title: Wrap(
                                     children: [
                                       TextCustom(
-                                        text:
-                                        'لقد قرأت',
+                                        text: 'لقد قرأت',
                                         fontSize: 12,
                                         color: AppColors.fontColor,
                                       ),
                                       InkWell(
-                                        onTap: (){},
+                                        onTap: () {},
                                         child: TextCustom(
-                                          text:
-                                          'الشروط',
+                                          text: 'الشروط',
                                           fontSize: 12,
                                           color: AppColors.fontColor,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                       InkWell(
-                                        onTap: (){},
+                                        onTap: () {},
                                         child: TextCustom(
-                                          text:
-                                          'والأحكام',
+                                          text: 'والأحكام',
                                           fontSize: 12,
                                           color: AppColors.fontColor,
                                           fontWeight: FontWeight.w500,
@@ -174,4 +180,3 @@ class _createAcount2State extends State<createAcount2> {
             )));
   }
 }
-

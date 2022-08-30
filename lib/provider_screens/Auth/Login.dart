@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:takkah/screens/Auth/valditeScreen.dart';
+import 'package:takkah/provider_screens/Auth/valditeScreen.dart';
 
 import '../../global_widgets/ButtonApp.dart';
 import '../../global_widgets/Custom app_bar_simple.dart';
@@ -79,9 +79,9 @@ class _LoginState extends State<Login> {
                                 Row(
                                   children: [
                                     InkWell(
-                                         onTap:(){
-                                           Get.to(createAcount());
-                                         },
+                                      onTap: () {
+                                        Get.to(createAcount());
+                                      },
                                       child: TextCustom(
                                         text: 'انشاء حساب! ',
                                         fontSize: 12,

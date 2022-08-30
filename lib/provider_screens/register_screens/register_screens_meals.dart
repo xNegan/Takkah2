@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:takkah/global_widgets/next_button.dart';
 import 'package:takkah/global_widgets/text_custom.dart';
-import 'package:takkah/screens/register_screens/register_screen.dart';
+import 'package:takkah/provider_screens/register_screens/register_screen.dart';
 import 'package:takkah/uitls/app_colors.dart';
 
 import '../../global_widgets/border_button.dart';
