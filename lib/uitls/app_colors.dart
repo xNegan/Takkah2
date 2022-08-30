@@ -5,8 +5,22 @@ class AppColors {
   static const tkGreytxt = Color(0xFF707070);
   static const tkborder = Color(0xFFE8E8E8);
   static const tkText = Color(0xFFB9B9B9);
+//////////////
+  static const drMainBlue = Color(0xFFF606AE5);
+  static const drNotificationContainer = Color(0xFFFF6F6F6);
+  static const drSettingText = Color(0xFF707070);
+  static const drAddLocation = Color(0xFF606AE5);
 
+  static const drInActiveBnbIcon = Color(0xFFAFAFAF);
+  static const drAppBarGrey = Color(0xFFFDBDBDB);
+  static const drAppBarSearchHintText = Color(0xFFFC8C8C8);
+  static const drHomSliderGrey = Color(0xFFF2F2F2);
+  static const drSearchTxtFieldBorder = Color(0xFFE2E2E2);
   ////////////////////
+
+  static const tkTextPro = Color(0xFF828282);
+
+  //////////////////
   static const purpleBasic = Color(0xff7C45A3);
   static const purpleBasicWithOpcity = Color(0xff7C45A3);
   static const gradientButtonSecondColorWithOpcity = Color(0xffC0AACF);

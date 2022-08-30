@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:takkah/delivery_screens/Auth/Login_dl.dart';
 
 import '../../global_widgets/text_custom.dart';
 import '../../uitls/app_colors.dart';
-import 'Login.dart';
+import 'Login_dl.dart';
+import 'createAcount_dl.dart';
 
 class LginAS extends StatefulWidget {
   const LginAS({Key? key}) : super(key: key);
@@ -28,8 +28,8 @@ class _LginASState extends State<LginAS> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xFFFA9C21),
-                    Color(0xFFC05501),
+                    Color(0xFF6069E5),
+                    Color(0xFFA5CCFF),
                   ],
                 ),
               ),
@@ -55,7 +55,7 @@ class _LginASState extends State<LginAS> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.to(() => Login());
+                          Get.to(() => createAcountDl());
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -89,7 +89,7 @@ class _LginASState extends State<LginAS> {
                       ),
                       InkWell(
                         onTap: () {
-                          Get.to(() => LoginDl());
+                          Get.to(() => createAcountDl());
                         },
                         child: Container(
                           decoration: BoxDecoration(
