@@ -7,15 +7,14 @@ import '../uitls/app_colors.dart';
 class ButtonApp extends StatelessWidget {
   final String title;
   final Function() onTap;
+  bool isblack;
   double width;
   double heigh;
-  bool isBLack;
 
   ButtonApp(
       {required this.title,
       required this.onTap,
       this.width = 330,
-      this.isBLack=false,
       this.heigh = 55});
 
   @override
@@ -25,20 +24,23 @@ class ButtonApp extends StatelessWidget {
       //margin: EdgeInsetsDirectional.only(start: 50.w, end: 50.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-       // color: isBLack?AppColors.blackColor:AppColors.maincolor
+        color: AppColors.blackColor
 
-      ),
       child: ElevatedButton(
           style: ButtonStyle(
-
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.r),
+              ),
+            ),
             minimumSize: MaterialStateProperty.all(Size(width.w, heigh.h)),
-            backgroundColor: MaterialStateProperty.all(!isBLack?AppColors.blackColor:AppColors.maincolor),
+            backgroundColor: MaterialStateProperty.all(Colors.transparent),
           ),
           onPressed: onTap,
           child: TextCustom(
             text: title,
             color: Colors.white,
-            fontSize: 16,
+            fontSize: fontSize.sp,
           )),
     );
   }
