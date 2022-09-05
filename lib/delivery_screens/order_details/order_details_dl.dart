@@ -251,6 +251,49 @@ class _OrderDetailsScreenDlState extends State<OrderDetailsScreenDl> {
             fontSize: 10,
             fontWeight: FontWeight.w500,
           ),
+          SizedBox(height: 24.h),
+
+          TextCustom(
+            text: 'معلومات اضافية',
+            color: Color(0xff4F4F4F),
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
+          SizedBox(height: 12.h),
+
+          Container(
+            padding: EdgeInsetsDirectional.only(
+              start: 10.w,
+              end: 15.w,
+              top: 17.h,
+              bottom: 17.h
+            ),
+            decoration: BoxDecoration(
+              color: Color(0xFFE8E8E8),
+              borderRadius: BorderRadiusDirectional.circular(5.r)
+            ),
+            margin: EdgeInsetsDirectional.only(
+              start: 11.w,
+              end: 17.w
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+
+
+                Row(
+                  children: [
+                    Icon(Icons.card_giftcard, color: AppColors.maincolor,),
+                    TextCustom(text: "من", fontSize: 13, fontWeight: FontWeight.w400 , color: AppColors.maincolor,),
+                    TextCustom(text: " السيد  ابراهيم علي ", fontSize: 13, fontWeight: FontWeight.w400 , color: Colors.black,),
+                    TextCustom(text: "إلى ", fontSize: 13, fontWeight: FontWeight.w400 , color: AppColors.maincolor,),
+                    TextCustom(text: "السيد  ابراهيم علي ", fontSize: 13, fontWeight: FontWeight.w400 , color: Colors.black,),
+                  ],
+                ),
+                Icon(Icons.call, color: AppColors.maincolor,)
+              ],
+            ),
+          ),
           SizedBox(
             height: 30.h,
           ),

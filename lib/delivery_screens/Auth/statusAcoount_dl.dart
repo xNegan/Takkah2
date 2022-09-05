@@ -60,6 +60,8 @@ class _StatusAcountDlState extends State<StatusAcountDl> {
                       ),
                       Spacer(),
                       ButtonApp(
+                        colorButton: Colors.black,
+
                         isblack: true,
                         onTap: () {
                           Get.to(statusSucsessDl());

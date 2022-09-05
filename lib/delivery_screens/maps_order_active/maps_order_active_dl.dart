@@ -85,7 +85,7 @@ class _MapsOrderActiveDlState extends State<MapsOrderActiveDl> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.h),
+        preferredSize: Size.fromHeight(80.h),
         child: SafeArea(
           child: Container(
               padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 13.h),
