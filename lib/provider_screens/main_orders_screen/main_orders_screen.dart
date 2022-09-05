@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../chat/chat_screen.dart';
 import '../../global_widgets/text_custom.dart';
 import '../../uitls/app_colors.dart';
 import '../order_details/order_details_screen.dart';
@@ -377,7 +378,7 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                 ],
               ),
               InkWell(
-                //   onTap: () => Get.to(ChatScreen()),
+                   onTap: () => Get.to(ChatScreen()),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

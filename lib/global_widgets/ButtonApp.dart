@@ -11,40 +11,36 @@ class ButtonApp extends StatelessWidget {
   double width;
   double heigh;
   double fontSize;
+  Color colorButton;
 
   ButtonApp(
       {required this.title,
       required this.onTap,
       this.fontSize = 14,
       this.width = 330,
+        this.colorButton = AppColors.maincolor,
       this.isblack = false,
       this.heigh = 55});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: heigh.h,
-      //margin: EdgeInsetsDirectional.only(start: 50.w, end: 50.w),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-          color: AppColors.blackColor),
+    return InkWell(
+      onTap: () => onTap(),
+      child: Container(
+        height: heigh.h,
+        width: width,
+        //margin: EdgeInsetsDirectional.only(start: 50.w, end: 50.w),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.r),
+            color: colorButton),
 
-      child: ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.r),
-              ),
-            ),
-            minimumSize: MaterialStateProperty.all(Size(width.w, heigh.h)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-          ),
-          onPressed: onTap,
-          child: TextCustom(
-            text: title,
-            color: Colors.white,
-            fontSize: fontSize,
-          )),
+        alignment: Alignment.center,
+        child:  TextCustom(
+              text: title,
+              color: Colors.white,
+              fontSize: fontSize,
+            )
+      ),
     );
   }
 }

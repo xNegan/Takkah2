@@ -257,6 +257,7 @@ class _createAcountDlState extends State<createAcountDl> {
                                   height: 30.h,
                                 ),
                                 ButtonApp(
+                                  colorButton: Colors.black,
                                   isblack: true,
                                   onTap: () {
                                     Get.to(LoginDl());

@@ -68,6 +68,8 @@ class _statusSucsessDlState extends State<statusSucsessDl> {
                       Spacer(),
                       //]jbfjhdsf
                       ButtonApp(
+                        colorButton: Colors.black,
+
                         isblack: true,
                         onTap: () {
                           Get.to(MainScreenDl());

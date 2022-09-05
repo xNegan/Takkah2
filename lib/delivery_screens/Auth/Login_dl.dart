@@ -105,6 +105,8 @@ class _LoginDlState extends State<LoginDl> {
                                   height: 45.h,
                                 ),
                                 ButtonApp(
+                                  colorButton: Colors.black,
+
                                   isblack: true,
                                   onTap: () {
                                     Get.to(StatusAcountDl());
