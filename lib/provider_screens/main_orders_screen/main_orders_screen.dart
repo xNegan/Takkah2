@@ -1,9 +1,14 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../chat/chat_screen.dart';
 import '../../global_widgets/text_custom.dart';
 import '../../uitls/app_colors.dart';
 import '../order_details/order_details_screen.dart';
@@ -19,6 +24,8 @@ class MainOrdersScreen extends StatefulWidget {
 enum PopupMenu { Details, Problem }
 
 class _MainOrdersScreenState extends State<MainOrdersScreen> {
+  int _duration = 10;
+  final CountDownController _CountDownController = CountDownController();
   List<String> items = [
     'المندوب تاخر',
     'المندوب لا يرد على رسائلي',
@@ -361,7 +368,7 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                 ],
               ),
               InkWell(
-                //   onTap: () => Get.to(ChatScreen()),
+                   onTap: () => Get.to(ChatScreen()),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -382,6 +389,53 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                 InkWell(
                   onTap: () {
                     //Dialog
+                    if (Platform.isAndroid) {
+                      dialog(onTap: () {
+                        Get.back();
+                        dialogSucsess();
+                      });
+                    } else {
+                      Get.dialog(CupertinoAlertDialog(
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                decoration: new BoxDecoration(
+                                    //  color: Colors.green,
+                                    borderRadius: new BorderRadius.all(
+                                        Radius.circular(50))),
+                                child: Icon(
+                                  Icons.clear,
+                                  size: 80,
+                                  color: AppColors.redColor,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                              TextCustom(
+                                text: "Title",
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                // color: AppColors.mainYellow,
+                              ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: TextCustom(
+                                  text: 'Ok',
+                                  color: AppColors.redColor,
+                                ))
+                          ]));
+                    }
                   },
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -416,8 +470,190 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
               //   ],
               // ),
             ],
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                _CountDownController.start();
+              },
+              child: Text('asd')),
+          ElevatedButton(
+              onPressed: () {
+                _CountDownController.pause();
+
+                setState(() {
+                  _duration = 100;
+                  // _duration = 60;
+                  // _CountDownController.resume();
+                });
+              },
+              child: Text('asd')),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(height: 50.h),
+              TextCustom(
+                text: 'الوقت لتجهيز الطلب',
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.maincolor,
+              ),
+              SizedBox(height: 20.h),
+              CircularCountDownTimer(
+                duration: _duration,
+                initialDuration: 0,
+                controller: _CountDownController,
+                width: 124.w,
+                height: 124.h,
+                ringColor: Colors.grey[300]!,
+                fillColor: AppColors.maincolor,
+                backgroundColor: Colors.white,
+                strokeWidth: 10.0,
+                strokeCap: StrokeCap.round,
+                textStyle: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.maincolor,
+                    fontWeight: FontWeight.w500),
+                textFormat: CountdownTextFormat.MM_SS,
+                isReverse: true,
+                isReverseAnimation: false,
+                isTimerTextShown: true,
+                autoStart: false,
+                onStart: () {
+                  debugPrint('Countdown Started');
+                },
+                onComplete: () {
+                  debugPrint('Countdown Ended');
+                },
+                onChange: (String timeStamp) {
+                  debugPrint('Countdown Changed $timeStamp');
+                },
+              ),
+              SizedBox(height: 25.h),
+            ],
+          ),
+
+          ////
         ],
+      ),
+    );
+  }
+
+  Future<dynamic> dialog({
+    required Function() onTap,
+    // required TextEditingController controller,
+  }) {
+    return Get.dialog(
+      AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextCustom(
+              text: "إضافة وقت التجهيز",
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              // color: AppColors.mainYellow,
+            ),
+            SizedBox(
+              height: 40.h,
+            ),
+            Container(
+              margin: EdgeInsetsDirectional.only(start: 80.w, end: 80.w),
+              height: 85.h,
+              decoration: new BoxDecoration(
+                  borderRadius: new BorderRadius.all(Radius.circular(10)),
+                  border: Border.all(color: AppColors.maincolor)),
+              child: TextFormField(
+                //  controller: controller,
+                keyboardType: TextInputType.datetime,
+                toolbarOptions: const ToolbarOptions(
+                  copy: true,
+                  cut: true,
+                  paste: true,
+                  selectAll: true,
+                ),
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 14.sp,
+                  color: AppColors.blackColor,
+                ),
+                decoration: InputDecoration(
+                  isDense: true,
+                  fillColor: Colors.transparent,
+                  filled: true,
+                  hintText: 'ادخل الوقت',
+                  hintStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 13.sp,
+                    color: AppColors.lGray,
+                  ),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(24.r),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(24.r),
+                    borderSide: BorderSide.none,
+                  ),
+                  errorBorder: InputBorder.none,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            InkWell(
+              onTap: onTap,
+              child: Container(
+                margin: EdgeInsetsDirectional.only(start: 50.w, end: 50.w),
+                height: 50.h,
+                decoration: new BoxDecoration(
+                    color: AppColors.maincolor,
+                    borderRadius: new BorderRadius.all(Radius.circular(10))),
+                child: Center(
+                  child: TextCustom(
+                    text: "تأكيد",
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30.0))),
+      ),
+    );
+  }
+
+  Future<dynamic> dialogSucsess() {
+    return Get.dialog(
+      AlertDialog(
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'images/check.png',
+              width: 100.w,
+            ),
+            SizedBox(
+              height: 50.h,
+            ),
+            TextCustom(
+              text: "تم إضافة الوقت بنجاح",
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              // color: AppColors.mainYellow,
+            ),
+          ],
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(30.0))),
       ),
     );
   }
