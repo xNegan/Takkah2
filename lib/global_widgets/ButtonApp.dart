@@ -10,11 +10,14 @@ class ButtonApp extends StatelessWidget {
   bool isblack;
   double width;
   double heigh;
+  double fontSize;
 
   ButtonApp(
       {required this.title,
       required this.onTap,
+      this.fontSize = 14,
       this.width = 330,
+      this.isblack = false,
       this.heigh = 55});
 
   @override
@@ -24,7 +27,7 @@ class ButtonApp extends StatelessWidget {
       //margin: EdgeInsetsDirectional.only(start: 50.w, end: 50.w),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
-        color: AppColors.blackColor
+          color: AppColors.blackColor),
 
       child: ElevatedButton(
           style: ButtonStyle(
@@ -40,7 +43,7 @@ class ButtonApp extends StatelessWidget {
           child: TextCustom(
             text: title,
             color: Colors.white,
-            fontSize: fontSize.sp,
+            fontSize: fontSize,
           )),
     );
   }

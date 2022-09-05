@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -95,7 +94,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             ),
             Spacer(),
             ButtonApp(
-              isBLack: true,
+              isblack: true,
               onTap: () {
                 Get.back();
                 // showDialogConform(Title: 'هل أنت متأكد من حذف الوجبة');

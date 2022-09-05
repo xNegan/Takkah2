@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,6 +29,24 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
   String? selectedItem = 'المندوب تاخر';
   int index = 0;
 
+  ////////////////
+  List<String> currentOrdersStatus = [
+    'دليفري',
+    'شخصي',
+    'محلي',
+  ];
+  String currentOrdersStatusSelectedItem = 'دليفري';
+  ///////////////
+
+  ////////////////
+  List<String> previousOrdersStatus = [
+    'دليفري',
+    'شخصي',
+    'محلي',
+  ];
+  String previousOrdersStatusSelectedItem = 'دليفري';
+  ///////////////
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -55,105 +72,187 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
     );
   }
 
-  ListView _previousOrdersView() {
-    return ListView.separated(
-      separatorBuilder: ((context, index) => SizedBox(height: 10.h)),
-      shrinkWrap: true,
-      itemCount: 5,
-      itemBuilder: ((context, index) => InkWell(
-            onTap: () {
-              setState(() {
-                //  selectedValue = items[index];
-              });
-            },
-            child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 13.h),
-                // alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    // border: Border.all(width: 1, color: AppColors.tkborder),
-                    // borderRadius: BorderRadius.circular(10.r),
-                    color: Color(0xffF6F6F6)),
-                child: Row(
-                  children: [
-                    Container(
-                      width: 45.w,
-                      height: 45.h,
+  Widget _previousOrdersView() {
+    return Column(
+      children: [
+        SizedBox(height: 20.h),
+        SizedBox(
+          height: 44.h,
+          child: ListView.separated(
+            physics: NeverScrollableScrollPhysics(),
+            separatorBuilder: ((context, index) => SizedBox(width: 20.w)),
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: previousOrdersStatus.length,
+            itemBuilder: ((context, index) => _orderTypeContainer(
+                  isSelected: previousOrdersStatusSelectedItem ==
+                      previousOrdersStatus[index],
+                  text: previousOrdersStatus[index],
+                  onTap: () {
+                    setState(() {
+                      previousOrdersStatusSelectedItem =
+                          previousOrdersStatus[index];
+                    });
+                  },
+                )),
+          ),
+        ),
+        SizedBox(height: 20.h),
+        Expanded(
+          child: ListView.separated(
+            separatorBuilder: ((context, index) => SizedBox(height: 10.h)),
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: ((context, index) => InkWell(
+                  onTap: () {
+                    setState(() {
+                      //  selectedValue = items[index];
+                    });
+                  },
+                  child: Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 12.w, vertical: 13.h),
+                      // alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            colorFilter: ColorFilter.linearToSrgbGamma(),
-                            image: AssetImage(
-                              'images/beak.png',
-                            )),
-                      ),
-                      // child: Image.asset('images/person.png')
-                    ),
-                    SizedBox(
-                      width: 15.w,
-                    ),
-                    Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                          // border: Border.all(width: 1, color: AppColors.tkborder),
+                          // borderRadius: BorderRadius.circular(10.r),
+                          color: Color(0xffF6F6F6)),
+                      child: Row(
                         children: [
-                          TextCustom(
-                            text: 'طلب وجبه كومبو من البيك',
-                            fontSize: 15.sp,
-                            color: Color(0xffAFAFAF),
-                            fontWeight: FontWeight.w600,
+                          Container(
+                            width: 45.w,
+                            height: 45.h,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: const DecorationImage(
+                                  fit: BoxFit.cover,
+                                  colorFilter: ColorFilter.linearToSrgbGamma(),
+                                  image: AssetImage(
+                                    'images/beak.png',
+                                  )),
+                            ),
+                            // child: Image.asset('images/person.png')
                           ),
                           SizedBox(
-                            height: 13.h,
+                            width: 15.w,
                           ),
-                          Row(
-                            children: [
-                              Container(child: Image.asset('images/clock.png')),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              TextCustom(
-                                text: 'منذ 4 آيام',
-                                fontSize: 12.sp,
-                                color: AppColors.hintText,
-                              ),
-                              SizedBox(
-                                width: 25.w,
-                              ),
-                              Container(
-                                  child:
-                                      Image.asset('images/money-recive.png')),
-                              SizedBox(
-                                width: 5.w,
-                              ),
-                              TextCustom(
-                                text: '135 ريال',
-                                fontSize: 12.sp,
-                                color: AppColors.hintText,
-                              ),
-                            ],
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextCustom(
+                                  text: 'طلب وجبه كومبو من البيك',
+                                  fontSize: 15.sp,
+                                  color: Color(0xffAFAFAF),
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                SizedBox(
+                                  height: 13.h,
+                                ),
+                                Row(
+                                  children: [
+                                    Container(
+                                        child: Image.asset('images/clock.png')),
+                                    SizedBox(
+                                      width: 5.w,
+                                    ),
+                                    TextCustom(
+                                      text: 'منذ 4 آيام',
+                                      fontSize: 12.sp,
+                                      color: AppColors.hintText,
+                                    ),
+                                    SizedBox(
+                                      width: 25.w,
+                                    ),
+                                    Container(
+                                        child: Image.asset(
+                                            'images/money-recive.png')),
+                                    SizedBox(
+                                      width: 5.w,
+                                    ),
+                                    TextCustom(
+                                      text: '135 ريال',
+                                      fontSize: 12.sp,
+                                      color: AppColors.hintText,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
+                          Spacer(),
+                          // InkWell(
+                          //   onTap: (){
+                          //
+                          //   },
+                          //     child: Icon(Icons.more_vert,color: AppColors.drInActiveBnbIcon,))
+                          _PopOutMenu()
                         ],
-                      ),
-                    ),
-                    Spacer(),
-                    // InkWell(
-                    //   onTap: (){
-                    //
-                    //   },
-                    //     child: Icon(Icons.more_vert,color: AppColors.drInActiveBnbIcon,))
-                    _PopOutMenu()
-                  ],
+                      )),
                 )),
-          )),
+          ),
+        ),
+      ],
     );
   }
 
-  ListView _currentOrdersView() {
-    return ListView.separated(
-        padding: EdgeInsets.symmetric(horizontal: 3.w),
-        itemBuilder: (context, index) => _currentOrderWidet(),
-        separatorBuilder: (context, index) => SizedBox(height: 5.h),
-        itemCount: 1);
+  Widget _currentOrdersView() {
+    return Column(
+      children: [
+        SizedBox(height: 20.h),
+        SizedBox(
+          height: 44.h,
+          child: ListView.separated(
+            physics: NeverScrollableScrollPhysics(),
+            separatorBuilder: ((context, index) => SizedBox(width: 20.w)),
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: currentOrdersStatus.length,
+            itemBuilder: ((context, index) => _orderTypeContainer(
+                  isSelected: currentOrdersStatusSelectedItem ==
+                      currentOrdersStatus[index],
+                  text: currentOrdersStatus[index],
+                  onTap: () {
+                    setState(() {
+                      currentOrdersStatusSelectedItem =
+                          currentOrdersStatus[index];
+                    });
+                  },
+                )),
+          ),
+        ),
+        SizedBox(height: 30.h),
+        Expanded(
+          child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 3.w),
+              itemBuilder: (context, index) => _currentOrderWidet(),
+              separatorBuilder: (context, index) => SizedBox(height: 5.h),
+              itemCount: 1),
+        ),
+      ],
+    );
+  }
+
+  InkWell _orderTypeContainer(
+      {required String text,
+      required bool isSelected,
+      required void Function() onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 35.w, vertical: 7.h),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: AppColors.maincolor),
+          borderRadius: BorderRadius.circular(5.r),
+          color: isSelected ? AppColors.maincolor : Colors.white,
+        ),
+        child: TextCustom(
+          text: text,
+          color: isSelected ? Colors.white : AppColors.maincolor,
+        ),
+      ),
+    );
   }
 
   Container _currentOrderWidet() {
@@ -229,7 +328,7 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-               onTap: () => Get.to(OrderDetailsScreen()),
+                onTap: () => Get.to(OrderDetailsScreen()),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -262,7 +361,7 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                 ],
               ),
               InkWell(
-             //   onTap: () => Get.to(ChatScreen()),
+                //   onTap: () => Get.to(ChatScreen()),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -279,6 +378,28 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                   ],
                 ),
               ),
+              if (currentOrdersStatusSelectedItem == currentOrdersStatus[2])
+                InkWell(
+                  onTap: () {
+                    //Dialog
+                  },
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.more_time_outlined,
+                        color: AppColors.maincolor,
+                      ),
+                      SizedBox(height: 6.h),
+                      TextCustom(
+                        text: 'اضافة الوقت',
+                        fontSize: 12,
+                        color: Color(0xffABABAB),
+                      ),
+                    ],
+                  ),
+                ),
+
               // Column(
               //   mainAxisSize: MainAxisSize.min,
               //   children: [
@@ -362,8 +483,7 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
           icon: TextCustom(
         text: text,
         fontSize: 16,
-        color:
-            isSelected ? AppColors.maincolor : Color(0xFFAFAFAF),
+        color: isSelected ? AppColors.maincolor : Color(0xFFAFAFAF),
       )),
     );
   }
