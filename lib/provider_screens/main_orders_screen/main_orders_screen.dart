@@ -1,3 +1,4 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,6 +20,8 @@ class MainOrdersScreen extends StatefulWidget {
 enum PopupMenu { Details, Problem }
 
 class _MainOrdersScreenState extends State<MainOrdersScreen> {
+  int _duration = 10;
+  final CountDownController _CountDownController = CountDownController();
   List<String> items = [
     'المندوب تاخر',
     'المندوب لا يرد على رسائلي',
@@ -416,7 +419,69 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
               //   ],
               // ),
             ],
-          )
+          ),
+          ElevatedButton(
+              onPressed: () {
+                _CountDownController.start();
+              },
+              child: Text('asd')),
+          ElevatedButton(
+              onPressed: () {
+                _CountDownController.pause();
+
+                setState(() {
+                  _duration = 100;
+                  // _duration = 60;
+                  // _CountDownController.resume();
+                });
+              },
+              child: Text('asd')),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(height: 50.h),
+              TextCustom(
+                text: 'الوقت لتجهيز الطلب',
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.maincolor,
+              ),
+              SizedBox(height: 20.h),
+              CircularCountDownTimer(
+                duration: _duration,
+                initialDuration: 0,
+                controller: _CountDownController,
+                width: 124.w,
+                height: 124.h,
+                ringColor: Colors.grey[300]!,
+                fillColor: AppColors.maincolor,
+                backgroundColor: Colors.white,
+                strokeWidth: 10.0,
+                strokeCap: StrokeCap.round,
+                textStyle: TextStyle(
+                    fontSize: 14.sp,
+                    color: AppColors.maincolor,
+                    fontWeight: FontWeight.w500),
+                textFormat: CountdownTextFormat.MM_SS,
+                isReverse: true,
+                isReverseAnimation: false,
+                isTimerTextShown: true,
+                autoStart: false,
+                onStart: () {
+                  debugPrint('Countdown Started');
+                },
+                onComplete: () {
+                  debugPrint('Countdown Ended');
+                },
+                onChange: (String timeStamp) {
+                  debugPrint('Countdown Changed $timeStamp');
+                },
+              ),
+              SizedBox(height: 25.h),
+            ],
+          ),
+
+          ////
         ],
       ),
     );
