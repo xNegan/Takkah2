@@ -23,8 +23,11 @@ class MainOrdersScreen extends StatefulWidget {
 enum PopupMenu { Details, Problem }
 
 class _MainOrdersScreenState extends State<MainOrdersScreen> {
+  late TextEditingController _addTimeController;
+
   int _duration = 10;
-  final CountDownController _CountDownController = CountDownController();
+  late CountDownController _CountDownController;
+  bool showTimerSection = false;
   List<String> items = [
     'المندوب تاخر',
     'المندوب لا يرد على رسائلي',
@@ -52,6 +55,13 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
   ];
   String previousOrdersStatusSelectedItem = 'دليفري';
   ///////////////
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _addTimeController = TextEditingController();
+    _CountDownController = CountDownController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -389,9 +399,33 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                   onTap: () {
                     //Dialog
                     if (Platform.isAndroid) {
-                      dialog(onTap: () {
-                        Get.back();
-                        dialogSucsess();
+                      dialogAddTime(onTap: () async {
+                        var temp = int.tryParse(_addTimeController.text);
+                        if (temp != null) {
+                          setState(() {
+                            _duration = temp * 60;
+                            showTimerSection = true;
+                            if (_CountDownController.isStarted) {
+                              _CountDownController.restart(duration: _duration);
+                            }
+                          });
+                          Get.back();
+
+                          dialogSucsess();
+
+                          await Future.delayed(Duration(seconds: 1));
+
+                          Get.back();
+                          _CountDownController.start();
+
+                          // _CountDownController.start();
+                        } else {
+                          Get.back();
+                          Get.snackbar(
+                              'صيغة توقيت خاطئة', 'ادخل الوقت بقيمة صحيحة',
+                              overlayColor: AppColors.maincolor);
+                        }
+                        _addTimeController.clear();
                       });
                     } else {
                       Get.dialog(CupertinoAlertDialog(
@@ -426,8 +460,35 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                           ),
                           actions: [
                             TextButton(
-                                onPressed: () {
-                                  Get.back();
+                                onPressed: () async {
+                                  var temp =
+                                      int.tryParse(_addTimeController.text);
+                                  if (temp != null) {
+                                    setState(() {
+                                      _duration = temp * 60;
+                                      showTimerSection = true;
+                                      if (_CountDownController.isStarted) {
+                                        _CountDownController.restart(
+                                            duration: _duration);
+                                      }
+                                    });
+                                    Get.back();
+
+                                    dialogSucsess();
+
+                                    await Future.delayed(Duration(seconds: 1));
+
+                                    Get.back();
+                                    _CountDownController.start();
+
+                                    // _CountDownController.start();
+                                  } else {
+                                    Get.back();
+                                    Get.snackbar('صيغة توقيت خاطئة',
+                                        'ادخل الوقت بقيمة صحيحة',
+                                        overlayColor: AppColors.maincolor);
+                                  }
+                                  _addTimeController.clear();
                                 },
                                 child: TextCustom(
                                   text: 'Ok',
@@ -470,66 +531,52 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
               // ),
             ],
           ),
-          ElevatedButton(
-              onPressed: () {
-                _CountDownController.start();
-              },
-              child: Text('asd')),
-          ElevatedButton(
-              onPressed: () {
-                _CountDownController.pause();
 
-                setState(() {
-                  _duration = 100;
-                  // _duration = 60;
-                  // _CountDownController.resume();
-                });
-              },
-              child: Text('asd')),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(height: 50.h),
-              TextCustom(
-                text: 'الوقت لتجهيز الطلب',
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: AppColors.maincolor,
-              ),
-              SizedBox(height: 20.h),
-              CircularCountDownTimer(
-                duration: _duration,
-                initialDuration: 0,
-                controller: _CountDownController,
-                width: 124.w,
-                height: 124.h,
-                ringColor: Colors.grey[300]!,
-                fillColor: AppColors.maincolor,
-                backgroundColor: Colors.white,
-                strokeWidth: 10.0,
-                strokeCap: StrokeCap.round,
-                textStyle: TextStyle(
-                    fontSize: 14.sp,
-                    color: AppColors.maincolor,
-                    fontWeight: FontWeight.w500),
-                textFormat: CountdownTextFormat.MM_SS,
-                isReverse: true,
-                isReverseAnimation: false,
-                isTimerTextShown: true,
-                autoStart: false,
-                onStart: () {
-                  debugPrint('Countdown Started');
-                },
-                onComplete: () {
-                  debugPrint('Countdown Ended');
-                },
-                onChange: (String timeStamp) {
-                  debugPrint('Countdown Changed $timeStamp');
-                },
-              ),
-              SizedBox(height: 25.h),
-            ],
-          ),
+          if (showTimerSection)
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(height: 50.h),
+                TextCustom(
+                  text: 'الوقت لتجهيز الطلب',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.maincolor,
+                ),
+                SizedBox(height: 20.h),
+                CircularCountDownTimer(
+                  duration: _duration,
+                  initialDuration: 0,
+                  controller: _CountDownController,
+                  width: 124.w,
+                  height: 124.h,
+                  ringColor: Colors.grey[300]!,
+                  fillColor: AppColors.maincolor,
+                  backgroundColor: Colors.white,
+                  strokeWidth: 10.0,
+                  strokeCap: StrokeCap.round,
+                  textStyle: TextStyle(
+                      fontSize: 14.sp,
+                      color: AppColors.maincolor,
+                      fontWeight: FontWeight.w500),
+                  textFormat: CountdownTextFormat.MM_SS,
+                  isReverse: true,
+                  isReverseAnimation: false,
+                  isTimerTextShown: true,
+                  autoStart: false,
+                  onStart: () {
+                    debugPrint('Countdown Started');
+                  },
+                  onComplete: () {
+                    debugPrint('Countdown Ended');
+                  },
+                  onChange: (String timeStamp) {
+                    debugPrint('Countdown Changed $timeStamp');
+                  },
+                ),
+                SizedBox(height: 25.h),
+              ],
+            ),
 
           ////
         ],
@@ -537,7 +584,7 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
     );
   }
 
-  Future<dynamic> dialog({
+  Future<dynamic> dialogAddTime({
     required Function() onTap,
     // required TextEditingController controller,
   }) {
@@ -558,13 +605,15 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
             ),
             Container(
               margin: EdgeInsetsDirectional.only(start: 80.w, end: 80.w),
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
               height: 85.h,
               decoration: new BoxDecoration(
                   borderRadius: new BorderRadius.all(Radius.circular(10)),
                   border: Border.all(color: AppColors.maincolor)),
               child: TextFormField(
-                //  controller: controller,
-                keyboardType: TextInputType.datetime,
+                textAlign: TextAlign.center,
+                controller: _addTimeController,
+                keyboardType: TextInputType.number,
                 toolbarOptions: const ToolbarOptions(
                   copy: true,
                   cut: true,
@@ -578,25 +627,27 @@ class _MainOrdersScreenState extends State<MainOrdersScreen> {
                 ),
                 decoration: InputDecoration(
                   isDense: true,
-                  fillColor: Colors.transparent,
-                  filled: true,
+                  // fillColor: Colors.transparent,
+                  // filled: true,
                   hintText: 'ادخل الوقت',
                   hintStyle: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 13.sp,
                     color: AppColors.lGray,
                   ),
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(24.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(24.r),
-                    borderSide: BorderSide.none,
-                  ),
-                  errorBorder: InputBorder.none,
+                  // contentPadding:
+                  //     EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+
+                  border: InputBorder.none,
+                  //  enabledBorder: OutlineInputBorder(
+                  //     borderRadius: BorderRadius.circular(24.r),
+                  //     borderSide: BorderSide.none,
+                  //   ),
+                  //   focusedBorder: OutlineInputBorder(
+                  //     borderRadius: BorderRadius.circular(24.r),
+                  //     borderSide: BorderSide.none,
+                  //   ),
+                  //   errorBorder: InputBorder.none,
                 ),
               ),
             ),
