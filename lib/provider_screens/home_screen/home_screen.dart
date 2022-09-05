@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 6.h),
               InkWell(
                 onTap: () {
-                 Get.to(CategoriesScreen());
+                  Get.to(CategoriesScreen());
                 },
                 child: _settingsItem(
                     startText: 'الاقسام',
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
       height: 324.h,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color:AppColors.maincolor)),
+          border: Border.all(color: AppColors.maincolor)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -139,7 +139,7 @@ class HomeScreen extends StatelessWidget {
               print(rating);
             },
           ),
-          SizedBox(height: 15.h),
+          SizedBox(height: 12.h),
           ElevatedButton(
               onPressed: () {
                 Get.to(UpdateProfile());
@@ -149,8 +149,7 @@ class HomeScreen extends StatelessWidget {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   minimumSize: Size(84.w, 28.h),
                   maximumSize: Size(84.w, 28.h),
-                primary: AppColors.maincolor
-              ),
+                  primary: AppColors.maincolor),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -178,7 +177,7 @@ class HomeScreen extends StatelessWidget {
       required IconData? icon}) {
     return Container(
       color: Color(0xFFFF6F6F6),
-     // color: AppColors.drNotificationContainer,
+      // color: AppColors.drNotificationContainer,
       padding: EdgeInsets.only(
         left: 30.w,
         top: 17.h,
