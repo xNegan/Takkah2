@@ -93,7 +93,7 @@ class StorageGetX {
 
   String getToken() {
     String token = box.read('token') ?? '';
-    return 'Bearer $token';
+    return token;
   }
 
   Future logout() async {
