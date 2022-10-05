@@ -205,7 +205,7 @@ class restaurantGetx extends GetxController with Api {
         },
         body: {
           //'restaurant_id':'1',
-          'restaurant_id': StorageGetX().id,
+          'restaurant_id': StorageGetX().restaurants,
            'name': nameBranch.text,
           'address': addressName,
           'latitude':Mylaut.toString(),
@@ -261,7 +261,7 @@ class restaurantGetx extends GetxController with Api {
         },
         body: {
           //'restaurant_id':'1',
-          'restaurant_id': StorageGetX().id,
+          'restaurant_id': StorageGetX().restaurants,
           'name': nameBranch.text,
           'address': addressName,
           'latitude':Mylaut.toString(),

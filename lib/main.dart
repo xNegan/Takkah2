@@ -7,8 +7,11 @@ import 'package:get_storage/get_storage.dart';
 import 'package:takkah/provider_screens/Auth/controller/LoginController.dart';
 import 'package:takkah/provider_screens/register_screens/register_screen.dart';
 import 'package:takkah/provider_screens/register_screens/register_screens_meals.dart';
+import 'package:takkah/provider_screens/restaurant/restaurantGetx.dart';
 import 'package:takkah/provider_screens/splash/splash_screen.dart';
+import 'package:takkah/provider_screens/updateScreen/controller/profileGetx.dart';
 
+import 'const/controller/ConstGetx.dart';
 import 'global_getX/api_getX.dart';
 
 void main() async {
@@ -32,6 +35,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => LoginGetX(), fenix: true);
     Get.lazyPut(() => ApiGetX(), fenix: true);
+    Get.lazyPut(() => restaurantGetx(), fenix: true);
+    Get.lazyPut(() => ConstGetx(), fenix: true);
+    Get.lazyPut(() => ProfileGetx(), fenix: true);
+
     return ScreenUtilInit(
       designSize: Size(428, 1156),
       builder: (BuildContext context, child) => GetMaterialApp(
