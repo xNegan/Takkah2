@@ -2,19 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:takkah/provider_screens/restaurant/restaurantGetx.dart';
 
 import '../../global_widgets/text_custom.dart';
 import '../../uitls/app_colors.dart';
 import '../../uitls/app_consts.dart';
 
 class MealsDetailsScreen extends StatefulWidget {
-  const MealsDetailsScreen({Key? key}) : super(key: key);
+
+  String idMeail;
+
+  MealsDetailsScreen({required this.idMeail});
 
   @override
   State<MealsDetailsScreen> createState() => _MealsDetailsScreenState();
 }
 
 class _MealsDetailsScreenState extends State<MealsDetailsScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    restaurantGetx.to.getMeal(idMenu: widget.idMeail.toString());
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

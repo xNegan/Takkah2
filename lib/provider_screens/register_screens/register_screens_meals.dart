@@ -455,7 +455,9 @@ class _RegisterScreenMealsState extends State<RegisterScreenMeals> {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7.r),
           border: Border.all(width: 1, color: AppColors.tkborder)),
-      child: TextField(
+      child: TextFormField(
+        controller: controller,
+        validator: validate,
         style: TextStyle(
           fontSize: 14.sp,
         ),

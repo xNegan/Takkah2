@@ -11,6 +11,7 @@ import '../restaurant/restaurantGetx.dart';
 import '../../global_widgets/text_custom.dart';
 import '../../uitls/app_colors.dart';
 import '../meals_details/meals_details_screen.dart';
+import 'edit_meals_screen.dart';
 
 
 class MealsScreen extends StatefulWidget {

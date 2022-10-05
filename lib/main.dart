@@ -11,12 +11,9 @@ import 'package:takkah/provider_screens/restaurant/restaurantGetx.dart';
 import 'package:takkah/provider_screens/splash/splash_screen.dart';
 import 'package:takkah/provider_screens/updateScreen/controller/profileGetx.dart';
 
-<<<<<<< HEAD
 import 'const/controller/ConstGetx.dart';
 import 'global_getX/api_getX.dart';
-=======
-import 'api_getX.dart';
->>>>>>> 0a9d59f3230e7b465bfefd3d8939298e4b4817df
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,11 +37,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => ApiGetX(), fenix: true);
     Get.lazyPut(() => restaurantGetx(), fenix: true);
-<<<<<<< HEAD
     Get.lazyPut(() => ConstGetx(), fenix: true);
     Get.lazyPut(() => ProfileGetx(), fenix: true);
-=======
->>>>>>> 0a9d59f3230e7b465bfefd3d8939298e4b4817df
 
     return ScreenUtilInit(
       designSize: Size(428, 1156),

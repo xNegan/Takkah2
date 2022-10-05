@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:takkah/provider_screens/rating/ratings_screen.dart';
 import 'package:takkah/provider_screens/updateScreen/updateProfile.dart';
 import 'package:takkah/uitls/storage_getX.dart';

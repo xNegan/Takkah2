@@ -7,6 +7,7 @@ import '../../global_widgets/text_custom.dart';
 import '../../global_widgets/text_field.dart';
 import '../../provider_screens/categories/sub_category_screen.dart';
 import '../../uitls/app_colors.dart';
+import '../register_screens/controller/register_info_resturent_controller.dart';
 import '../register_screens/register_screen.dart';
 import '../restaurant/Model/RestModel.dart';
 import '../restaurant/restaurantGetx.dart';
