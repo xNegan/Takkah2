@@ -101,6 +101,11 @@ class _MealsScreenState extends State<MealsScreen> {
                   ),
                 ),
               ),
+              controller.MealsList.isEmpty?
+              SizedBox(
+                height: 500.h,
+                  child: Center(child: TextCustom(text: "لا يوجد وجبات مضافة"),))
+                  :
               GridView.builder(
                   shrinkWrap: true,
                   physics: ScrollPhysics(),

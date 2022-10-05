@@ -194,7 +194,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         ),
         body: controller.myRestaurant?.categories==null?
         Center(child: TextCustom(text: "لا يوجد اقسام مضافة"),)
-            : Column(
+            : ListView(
           children: [
             GetBuilder<restaurantGetx>(
               builder: (controller1) {
