@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../global_widgets/text_custom.dart';
 import '../uitls/app_colors.dart';
-import 'balance_withdrawal/balance_withdrawal_screen.dart';
+import 'Bank/balance_withdrawal/balance_withdrawal_screen.dart';
 import 'home_screen/home_screen.dart';
 import 'main_orders_screen/main_orders_screen.dart';
 import 'notification_screen/notification_screen.dart';

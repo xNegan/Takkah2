@@ -5,6 +5,9 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:takkah/preferences/user_preferences.dart';
+import 'package:takkah/provider_screens/Auth/controller/LoginController.dart';
+import 'package:takkah/provider_screens/Bank/controller/BankController.dart';
+import 'package:takkah/provider_screens/register_screens/controller/register_info_resturent_controller.dart';
 import 'package:takkah/provider_screens/register_screens/register_screen.dart';
 import 'package:takkah/provider_screens/register_screens/register_screens_meals.dart';
 import 'package:takkah/provider_screens/restaurant/restaurantGetx.dart';
@@ -35,10 +38,14 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => LoginGetX(), fenix: true);
     Get.lazyPut(() => ApiGetX(), fenix: true);
     Get.lazyPut(() => restaurantGetx(), fenix: true);
+    Get.lazyPut(() => BankGetx(), fenix: true);
     Get.lazyPut(() => ConstGetx(), fenix: true);
     Get.lazyPut(() => ProfileGetx(), fenix: true);
+    Get.lazyPut(() => RegisterInfoResturentController(), fenix: true);
+
 
     return ScreenUtilInit(
       designSize: Size(428, 1156),

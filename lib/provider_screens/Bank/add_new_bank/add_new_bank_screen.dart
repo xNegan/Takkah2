@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../global_widgets/text_custom.dart';
-import '../../uitls/app_colors.dart';
+import '../../../global_widgets/text_custom.dart';
+import '../../../uitls/app_colors.dart';
+import '../controller/BankController.dart';
 
 
 class AddNewBankScreen extends StatefulWidget {
@@ -40,6 +41,7 @@ class _AddNewBankScreenState extends State<AddNewBankScreen> {
             child: Column(
               children: [
                 TextField(
+                  controller: BankGetx.to.name,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -70,6 +72,7 @@ class _AddNewBankScreenState extends State<AddNewBankScreen> {
 
                 SizedBox(height: 20.h,),
                 TextField(
+                  controller: BankGetx.to.iban,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -100,6 +103,7 @@ class _AddNewBankScreenState extends State<AddNewBankScreen> {
                 SizedBox(height: 20.h,),
 
                 TextField(
+                  controller: BankGetx.to.mobile,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
@@ -137,7 +141,9 @@ class _AddNewBankScreenState extends State<AddNewBankScreen> {
               start: 12.w,
               end: 12.w
             ),
-            child: ElevatedButton(onPressed: (){}, child: TextCustom(text: "حفظ", fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white,),
+            child: ElevatedButton(onPressed: (){
+              BankGetx.to.addBank();
+            }, child: TextCustom(text: "حفظ", fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white,),
             style: ElevatedButton.styleFrom(
               primary: AppColors.maincolor,
               minimumSize: Size(double.infinity, 55.h),
