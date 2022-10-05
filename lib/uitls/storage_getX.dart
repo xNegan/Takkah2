@@ -1,6 +1,5 @@
 import 'package:get_storage/get_storage.dart';
 
-import '../models/user.dart';
 //
 class StorageGetX {
   final box = GetStorage();

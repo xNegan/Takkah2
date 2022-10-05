@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:takkah/preferences/user_preferences.dart';
 import '../../const/Models/Day.dart';
 import '../../global_getX/api_getX.dart';
 import '../../uitls/api.dart';
@@ -22,7 +23,7 @@ class restaurantGetx extends GetxController with Api {
       Uri url = Uri.parse(Restaurant + id);
       //   Uri url = Uri.parse(Restaurant + StorageGetX().Restaurants);
       var response = await http.get(url, headers: {
-        'Authorization': StorageGetX().getToken(),
+        'Authorization': UserPreferences().getTokenStore(),
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Accept': '*/*',
@@ -69,8 +70,9 @@ class restaurantGetx extends GetxController with Api {
       Uri url = Uri.parse(
           MenuRes + 'restaurant_id=$idRestunalt&category_id=$idCatogery');
       //   Uri url = Uri.parse(Restaurant + StorageGetX().Restaurants);
+      print(url);
       var response = await http.get(url, headers: {
-        'Authorization': StorageGetX().getToken(),
+        'Authorization': UserPreferences().getTokenStore(),
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Accept': '*/*',

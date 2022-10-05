@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import '../../../api_settings.dart';
+import '../../../delivery_screens/main_screen_dl.dart';
 import '../../../global_getX/api_getX.dart';
 import '../../../preferences/user_preferences.dart';
 import '../../register_screens/register_screen.dart';
@@ -261,8 +262,8 @@ void getCategories() async {
   }
 
   void getNationalites() async {
-   // Nationality? nationality = await getNationalityFromApi();
-   // natioliteis.add(nationality!);
+   Nationality? nationality = await getNationalityFromApi();
+   natioliteis.add(nationality!);
     update();
   }
 pickLogo() async{
@@ -515,7 +516,8 @@ selectCategory({required int currentIndex, required int id}){
       Driver user  = Driver.fromJson(jsonDecode(respStr));
       if(user != null){
         UserPreferences().saveDriver(user);
-        Get.to(StatusAcount());
+
+        Get.off(MainScreenDl());
         Get.showSnackbar(GetSnackBar(
           title: "تم التسجيل بنجاح",
           message: "تم التسجيل بنجاح",

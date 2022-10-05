@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:takkah/preferences/user_preferences.dart';
 import '../../global_widgets/loading_data.dart';
 import '../../uitls/storage_getX.dart';
 import '../register_screens/register_screens_meals.dart';
@@ -28,7 +29,7 @@ class _MealsScreenState extends State<MealsScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    restaurantGetx.to.getMealsList(idRestunalt:StorageGetX().restaurants.toString(), idCatogery: widget.idCatogery);
+    restaurantGetx.to.getMealsList(idRestunalt:UserPreferences().store_id.toString(), idCatogery: widget.idCatogery);
    // restaurantGetx.to.getMeal(idMenu: widget.idMenu.toString());
 
     super.initState();

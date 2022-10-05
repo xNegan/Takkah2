@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:takkah/preferences/user_preferences.dart';
 import 'package:takkah/provider_screens/rating/ratings_screen.dart';
 import 'package:takkah/provider_screens/updateScreen/updateProfile.dart';
 import 'package:takkah/uitls/storage_getX.dart';
@@ -25,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    restaurantGetx.to.getRestaurantById(id:StorageGetX().restaurants.toString()/* '1'*/);
+    restaurantGetx.to.getRestaurantById(id:UserPreferences().store_id.toString());
 
     super.initState();
   }

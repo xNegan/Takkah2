@@ -9,10 +9,10 @@ import 'package:http/http.dart' as http;
 import '../../../delivery_screens/main_screen_dl.dart';
 import '../../../global_getX/api_getX.dart';
 import '../../../global_widgets/text_custom.dart';
-import '../../../models/user.dart';
 import '../../../uitls/api.dart';
 import '../../../uitls/storage_getX.dart';
 import '../../main_screen.dart';
+import '../models/user.dart';
 
 class LoginGetX extends GetxController with Api {
   static LoginGetX get to => Get.find();
