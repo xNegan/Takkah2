@@ -13,6 +13,7 @@ import '../../global_widgets/text_custom.dart';
 import '../../global_widgets/text_field.dart';
 import '../../uitls/app_colors.dart';
 
+import 'controller/LoginController.dart';
 import 'createAcount.dart';
 import 'createAcount2.dart';
 
@@ -25,102 +26,130 @@ class _LoginState extends State<Login> {
   final TextEditingController link = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: SafeArea(
-              child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xFFFA9C21),
-                        Color(0xFFC05501),
-                      ],
-                    ),
-                  ),
-                  child: Center(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Image.asset(
-                            "images/splachicon.png",
-                          ),
-                          Container(
-                            width: context.width,
-                            height: 800.h,
-                            margin: EdgeInsets.only(
-                                bottom: 10.h,
-                                left: 10.w,
-                                right: 10.w,
-                                top: 50.h),
-                            padding: EdgeInsets.only(
-                                top: 77.h,
-                                left: 30.w,
-                                right: 30.w,
-                                bottom: 50.h),
-                            decoration: BoxDecoration(
-                                color: AppColors.whiteColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextCustom(
-                                  text: 'دخول',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                SizedBox(
-                                  height: 21.h,
-                                ),
-                                Row(
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        Get.to(createAcount());
-                                      },
-                                      child: TextCustom(
-                                        text: 'انشاء حساب! ',
-                                        fontSize: 12,
-                                        color: AppColors.maincolor,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    TextCustom(
-                                      text: 'ليس لديك حساب؟',
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 41.h,
-                                ),
-                                TextFieldCustom(
-                                  textInputType: TextInputType.text,
-                                  textHint: 'ادخل رقم الجوال',
-                                  hintColor: AppColors.blackColor,
-                                ),
-                                SizedBox(
-                                  height: 45.h,
-                                ),
-                                ButtonApp(
-                                  onTap: () {
-                                    Get.to(valditeScreen());
-                                  },
-                                  title: 'دخول',
-                                )
+    return GetBuilder<LoginGetX>(
+        init: LoginGetX(),
+        builder: (authGetX)=>
+            SafeArea(
+                child: Scaffold(
+                    backgroundColor: Colors.transparent,
+                    body: SafeArea(
+                      child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color(0xFFFA9C21),
+                                Color(0xFFC05501),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                  )),
-            )));
+                          child: Center(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Image.asset(
+                                    "images/splachicon.png",
+                                  ),
+                                  Container(
+                                    width: context.width,
+                                    height: 800.h,
+                                    margin: EdgeInsets.only(
+                                        bottom: 10.h,
+                                        left: 10.w,
+                                        right: 10.w,
+                                        top: 50.h),
+                                    padding: EdgeInsets.only(
+                                        top: 77.h,
+                                        left: 30.w,
+                                        right: 30.w,
+                                        bottom: 50.h),
+                                    decoration: BoxDecoration(
+                                        color: AppColors.whiteColor,
+                                        borderRadius:
+                                        BorderRadius.all(Radius.circular(30))),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        TextCustom(
+                                          text: 'دخول',
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        SizedBox(
+                                          height: 21.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            InkWell(
+                                              onTap: () {
+                                                Get.to(createAcount());
+                                              },
+                                              child: TextCustom(
+                                                text: 'انشاء حساب! ',
+                                                fontSize: 12,
+                                                color: AppColors.maincolor,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            TextCustom(
+                                              text: 'ليس لديك حساب؟',
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 41.h,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: TextFieldCustom(
+                                                //   validate: authGetX.validateNum,
+                                                controller: authGetX.mobileController,
+                                                textInputType: TextInputType.phone,
+                                                textHint: 'ادخل رقم الجوال',
+                                                hintColor: AppColors.blackColor,
+                                              ),
+                                              flex: 3,
+                                            ),
+                                            SizedBox(width: 10.w,),
+                                            Expanded(
+                                              child:Container(
+                                                height: 55.h,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.transparent,
+                                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                  border: Border.all(color:Colors.grey.shade300),),
+                                                child:  Center(child: TextCustom(text: "972+")),
+                                              ),
+                                              flex: 1,
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 45.h,
+                                        ),
+                                        ButtonApp(
+                                          onTap: () {
+                                            authGetX.login(Type: 'RESTAURANT');
+                                            //   Get.to(valditeScreen());
+                                          },
+                                          title: 'دخول',
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )),
+                    )))
+    );
+
+
   }
 }
 

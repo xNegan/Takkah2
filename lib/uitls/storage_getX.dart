@@ -1,38 +1,53 @@
-
-
 import 'package:get_storage/get_storage.dart';
 
+import '../models/user.dart';
+//
 class StorageGetX {
-
   final box = GetStorage();
 
-  Future setShowOnboarding()async{
+  Future setShowOnboarding() async {
     await box.write('showOnBoarding', true);
   }
-  Future setIsLogin()async{
+  // Future saveStore(User user) async {
+  //   await _sharedPreferences.setBool('logged_in_store', true);
+  //   await _sharedPreferences.setString('tokenStore', user.data!.token!);
+  //   await _sharedPreferences.setInt('id_store', user.data!.restaurant_id!);
+  // }
+
+  Future setIsLogin() async {
     await box.write('isLogin', true);
   }
-  Future setIsActive()async{
+
+  Future setIsActive() async {
     await box.write('isActive', true);
   }
-  Future setIsNotActive()async{
+
+  Future setIsNotActive() async {
     await box.write('isActive', false);
   }
-  Future setTokens({required String accessToken, refreshToken})async{
-    await box.write('accessToken', accessToken);
-    await box.write('refreshToken', refreshToken);
+
+  Future setTokens({required String token}) async {
+    await box.write('token', 'Bearer $token');
   }
-  Future setUserName({required String UserName})async{
-    await box.write('UserName', UserName);
+
+  Future setRestaurants({required String restaurants}) async {
+    await box.write('restaurants', restaurants);
   }
-  Future setPassword({required String Password})async{
-    await box.write('Password', Password);
+
+  Future setName({required String name}) async {
+    await box.write('name', name);
   }
-  Future setImei({required String Imei})async{
-    await box.write('Imei', Imei);
+
+  Future setImei({required String Imei}) async {
+    await box.write('imei', Imei);
   }
-  Future setImeiIos({required String ImeiIos})async{
-    await box.write('ImeiIos', ImeiIos);
+
+  Future setId({required String id}) async {
+    await box.write('id', id);
+  }
+
+  Future setImeiIos({required String imeiIos}) async {
+    await box.write('imeiIos', imeiIos);
   }
   //
   //
@@ -50,19 +65,17 @@ class StorageGetX {
   //   await box.write('type', user.type);
   // }
 
-
-
-
-
   bool get isShowOnBoarding => box.read('showOnBoarding') ?? false;
   bool get isLogin => box.read('isLogin') ?? false;
   bool get isActive => box.read('isActive') ?? false;
-  String get accessToken => box.read('accessToken') ?? '';
-  String get refreshToken => box.read('refreshToken') ?? '';
-  String get UserName => box.read('UserName');
-  String get Password => box.read('Password');
-  String get Imei => box.read('Imei');
-  String get ImeiIos => box.read('ImeiIos');
+  String get token => box.read('token') ?? '';
+  String get restaurants => box.read('restaurants') ?? '';
+  String get name => box.read('name');
+  String get id => box.read('id');
+  String get image => box.read('image');
+
+  String get imei => box.read('imei');
+  String get imeiIos => box.read('imei');
   // String get userId => box.read('userId') ?? '';
   // String get name => box.read('name') ?? '';
   // String get imageUrl => box.read('imageUrl') ?? '';
@@ -74,34 +87,31 @@ class StorageGetX {
   // String get type => box.read('type') ?? '';
   // String get emirateId => box.read('emirateId') ?? '';
 
-
-
-
-
   bool isLoggedIn() {
     return box.read('logged_in') ?? false;
   }
 
-  String getAccessToken() {
-    String token = box.read('accessToken') ?? '';
+  String getToken() {
+    String token = box.read('token') ?? '';
     return 'Bearer $token';
   }
 
   Future logout() async {
-  await  GetStorage().erase();
+    await GetStorage().erase();
     return box.erase();
   }
+
   /// Write
-  void saveLanguageToDisk (String langusage)async{
+  void saveLanguageToDisk(String langusage) async {
     await GetStorage().write('lang', langusage);
   }
 
   /// Read
-  Future<String> get languageSelected async{
+  Future<String> get languageSelected async {
     return await GetStorage().read('lang');
   }
+
   String getlaunguage() {
     return GetStorage().read('lang').toString();
   }
-
 }
