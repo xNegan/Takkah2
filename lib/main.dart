@@ -4,21 +4,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:takkah/provider_screens/Auth/controller/LoginController.dart';
+import 'package:takkah/preferences/user_preferences.dart';
 import 'package:takkah/provider_screens/register_screens/register_screen.dart';
 import 'package:takkah/provider_screens/register_screens/register_screens_meals.dart';
 import 'package:takkah/provider_screens/restaurant/restaurantGetx.dart';
 import 'package:takkah/provider_screens/splash/splash_screen.dart';
 import 'package:takkah/provider_screens/updateScreen/controller/profileGetx.dart';
 
+<<<<<<< HEAD
 import 'const/controller/ConstGetx.dart';
 import 'global_getX/api_getX.dart';
+=======
+import 'api_getX.dart';
+>>>>>>> 0a9d59f3230e7b465bfefd3d8939298e4b4817df
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await GetStorage.init();
+  await UserPreferences().initPreferences();
   // await FlutterDownloader.initialize(
   //     debug:
   //         true, // optional: set to false to disable printing logs to console (default: true)
@@ -33,11 +38,13 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => LoginGetX(), fenix: true);
     Get.lazyPut(() => ApiGetX(), fenix: true);
     Get.lazyPut(() => restaurantGetx(), fenix: true);
+<<<<<<< HEAD
     Get.lazyPut(() => ConstGetx(), fenix: true);
     Get.lazyPut(() => ProfileGetx(), fenix: true);
+=======
+>>>>>>> 0a9d59f3230e7b465bfefd3d8939298e4b4817df
 
     return ScreenUtilInit(
       designSize: Size(428, 1156),
