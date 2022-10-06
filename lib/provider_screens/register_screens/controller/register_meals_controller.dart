@@ -115,7 +115,7 @@ pickMealImage() async{
 
 
  void createMelas() async {
-print(StorageGetX().restaurants);
+print(StorageGetX.restaurants);
 print(selectedCategoryId);
    // showAlertDialog(context, "Uploading Property. Please wait...");
    ///MultiPart request
@@ -201,7 +201,7 @@ print(selectedCategoryId);
    // print("RESPONSE:: $map");
  }
  void editMelas() async {
-   print(StorageGetX().restaurants);
+   print(StorageGetX.restaurants);
    print(selectedCategoryId);
    print("Meals ID: ${mealID.toString()}");
    // showAlertDialog(context, "Uploading Property. Please wait...");
@@ -242,7 +242,7 @@ print(selectedCategoryId);
 
 
 
-   print("Resutrents ID:: ${StorageGetX().restaurants}");
+   print("Resutrents ID:: ${StorageGetX.restaurants}");
    print("Category ID:: ${selectedCategoryId}");
    print("Meal Name:: ${mealNameController.text}");
    print("Price:: ${priceMealController.text}");

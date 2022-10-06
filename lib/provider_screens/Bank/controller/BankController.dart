@@ -26,7 +26,7 @@ TextEditingController mobile =TextEditingController();
       Uri url = Uri.parse(Banktotol);
       var response = await http.get(url,
           headers: {
-        'Authorization': StorageGetX().token,
+        'Authorization': StorageGetX.token,
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Accept': '*/*',
@@ -64,19 +64,19 @@ TextEditingController mobile =TextEditingController();
   Future<void> addBank() async {
     try {
 
-      print(StorageGetX().id);
+      print(StorageGetX.id);
       ApiGetX.to.onLoading(isShow: true);
       var url = Uri.parse(addYourBank);
       var response = await http.post(
         url,
         headers: {
-          'Authorization': StorageGetX().token,
+          'Authorization': StorageGetX.token,
           'Accept-Encoding': 'gzip, deflate, br',
           'Connection': 'keep-alive',
           'Accept': '*/*',
         },
         body: {
-          'restaurant_id': StorageGetX().restaurants,
+          'restaurant_id': StorageGetX.restaurants,
           'name': name.text,
           'iban': iban.text,
           'mobile':mobile.text,

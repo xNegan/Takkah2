@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    restaurantGetx.to.getRestaurantById(id:StorageGetX().restaurants);
+    restaurantGetx.to.getRestaurantById(id:StorageGetX.restaurants);
     //restaurantGetx.to.getRestaurantById(id:UserPreferences().store_id.toString());
 
     super.initState();

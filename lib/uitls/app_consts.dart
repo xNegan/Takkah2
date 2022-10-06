@@ -139,8 +139,7 @@ void showDialogConform(
 }
  Future<void> checkApi(var response) async {
 if(response.statusCode == 401) {
-  await StorageGetX().logout();
-  await StorageGetX().setIsActive();
+  await StorageGetX.logout();
  // Get.offAll(LoginScreen());
 }else {
   Get.snackbar('failed'.tr, response.body['message'],

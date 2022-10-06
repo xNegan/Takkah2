@@ -115,12 +115,12 @@ class restaurantGetx extends GetxController with Api {
   bool isLoadmyMeails = true;
   Future getMeal({required String idMenu}) async {
     isLoadmyMeails = true;
-    print(StorageGetX().getToken(),);
+    print(StorageGetX.getToken(),);
     try {
       Uri url = Uri.parse(MealsRes + idMenu.toString());
       //   Uri url = Uri.parse(Restaurant + StorageGetX().Restaurants);
       var response = await http.get(url, headers: {
-        'Authorization': StorageGetX().getToken(),
+        'Authorization': StorageGetX.getToken(),
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive',
         'Accept': '*/*',
@@ -194,20 +194,20 @@ class restaurantGetx extends GetxController with Api {
 
   Future<void> addBranch() async {
     try {
-      print(StorageGetX().id);
+      print(StorageGetX.id);
       ApiGetX.to.onLoading(isShow: true);
       var url = Uri.parse(addBranchUrl);
       var response = await http.post(
         url,
         headers: {
-          'Authorization': StorageGetX().token,
+          'Authorization': StorageGetX.token,
           'Accept-Encoding': 'gzip, deflate, br',
           'Connection': 'keep-alive',
           'Accept': '*/*',
         },
         body: {
           //'restaurant_id':'1',
-          'restaurant_id': StorageGetX().restaurants,
+          'restaurant_id': StorageGetX.restaurants,
            'name': nameBranch.text,
           'address': addressName,
           'latitude':Mylaut.toString(),
@@ -226,7 +226,7 @@ class restaurantGetx extends GetxController with Api {
       print(response.body);
       print(response.statusCode);
       if (responsestatus == 200) {
-        restaurantGetx.to.getRestaurantById(id: StorageGetX().restaurants/* '1'*/);
+        restaurantGetx.to.getRestaurantById(id: StorageGetX.restaurants/* '1'*/);
         ApiGetX.to.onLoading(isShow: false);
         print(responseData['data'],);
         Get.back();
@@ -250,20 +250,20 @@ class restaurantGetx extends GetxController with Api {
   }
   Future<void> updateBranch({required String idBranch}) async {
     try {
-      print(StorageGetX().id);
+      print(StorageGetX.id);
       ApiGetX.to.onLoading(isShow: true);
       var url = Uri.parse(addBranchUrl);
       var response = await http.post(
         url,
         headers: {
-          'Authorization': StorageGetX().token,
+          'Authorization': StorageGetX.token,
           'Accept-Encoding': 'gzip, deflate, br',
           'Connection': 'keep-alive',
           'Accept': '*/*',
         },
         body: {
           //'restaurant_id':'1',
-          'restaurant_id': StorageGetX().restaurants,
+          'restaurant_id': StorageGetX.restaurants,
           'name': nameBranch.text,
           'address': addressName,
           'latitude':Mylaut.toString(),
@@ -283,7 +283,7 @@ class restaurantGetx extends GetxController with Api {
       print(response.body);
       print(response.statusCode);
       if (responsestatus == 200) {
-         await restaurantGetx.to.getRestaurantById(id: StorageGetX().restaurants/* '1'*/);
+         await restaurantGetx.to.getRestaurantById(id: StorageGetX.restaurants/* '1'*/);
         ApiGetX.to.onLoading(isShow: false);
         print(responseData['data'],);
         Get.back();
@@ -313,7 +313,7 @@ class restaurantGetx extends GetxController with Api {
       var response = await http.post(
         url,
         headers: {
-          'Authorization': StorageGetX().token,
+          'Authorization': StorageGetX.token,
           'Accept-Encoding': 'gzip, deflate, br',
           'Connection': 'keep-alive',
           'Accept': '*/*',
@@ -408,7 +408,7 @@ class restaurantGetx extends GetxController with Api {
       Uri url = Uri.parse(constantsDay);
       var response = await http.get(url,
           headers: {
-            'Authorization': StorageGetX().token,
+            'Authorization': StorageGetX.token,
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
             'Accept': '*/*',

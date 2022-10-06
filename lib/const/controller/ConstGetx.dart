@@ -20,7 +20,7 @@ class ConstGetx extends GetxController with Api {
       Uri url = Uri.parse(constantsDay);
       var response = await http.get(url,
           headers: {
-            'Authorization': StorageGetX().token,
+            'Authorization': StorageGetX.token,
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
             'Accept': '*/*',

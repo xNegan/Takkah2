@@ -10,6 +10,7 @@ import '../../../api_settings.dart';
 import '../../../delivery_screens/main_screen_dl.dart';
 import '../../../global_getX/api_getX.dart';
 import '../../../preferences/user_preferences.dart';
+import '../../../uitls/storage_getX.dart';
 import '../../register_screens/register_screen.dart';
 import '../models/categories.dart';
 import '../models/driver.dart';
@@ -411,6 +412,7 @@ selectCategory({required int currentIndex, required int id}){
 
     print('Response:: $res');
     if(res.statusCode == 200){
+      await StorageGetX.setType(Type: 'RESTAURANT');
       print(res);
       print(res.statusCode);
       // print("This is response:" + res.toString());

@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../provider_screens/Auth/models/driver.dart';
 import '../provider_screens/Auth/models/user.dart';
+import '../uitls/storage_getX.dart';
 
 
 class UserPreferences {
@@ -20,9 +21,22 @@ class UserPreferences {
   }
 
   Future saveStore(User user) async {
-      await _sharedPreferences.setBool('logged_in_store', true);
-      await _sharedPreferences.setString('tokenStore', user.data!.token!);
-      await _sharedPreferences.setInt('id_store', user.data!.id!);
+    print("ID From Shared::${user.data!.id}");
+    print(user.data!.name);
+    print(user.data!.restaurant_id.toString());
+
+    await _sharedPreferences.setBool('logged_in_store', true);
+    await _sharedPreferences.setString('tokenStore', user.data!.token!);
+    await _sharedPreferences.setInt('id_store', user.data!.id!);
+    await StorageGetX.box.write('image',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhhBSGKxGPiUkd32iOTsfaGW43yuJaz1yQpA&usqp=CAU');
+
+    await StorageGetX.setTokens(token: user.data!.token!);
+    await StorageGetX.setId(id: user.data!.id.toString());
+    await StorageGetX.setName(name: user.data!.name.toString());
+    await StorageGetX.setEmail(Email: user.data!.email.toString()!);
+    await StorageGetX.setRestaurantsId(restaurants: user.data!.id.toString()!,);
+    await StorageGetX.setIsLogin();
   }
 
 
@@ -30,8 +44,16 @@ class UserPreferences {
     await _sharedPreferences.setBool('logged_in_driver', true);
     await _sharedPreferences.setString('tokenDriver', user.data!.token!);
     await _sharedPreferences.setInt('id_driver', user.data!.id!);
-  }
+    await StorageGetX.box.write('image',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhhBSGKxGPiUkd32iOTsfaGW43yuJaz1yQpA&usqp=CAU');
 
+    await StorageGetX.setTokens(token: user.data!.token!);
+    await StorageGetX.setId(id: user.data!.id.toString());
+    await StorageGetX.setName(name: user.data!.name.toString());
+    await StorageGetX.setEmail(Email: user.data!.email.toString()!);
+    //await StorageGetX.setRestaurantsId(restaurants: user.data!.restaurant_id.toString()!,);
+    await StorageGetX.setIsLogin();
+  }
   Future setFirstVist() async {
     await _sharedPreferences.setBool('newUser', true);
   }

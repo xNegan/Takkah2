@@ -69,14 +69,14 @@ class LoginGetX extends GetxController with Api {
         }
         ApiGetX.to.onLoading(isShow: false);
 
-        await StorageGetX().box.write('image', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhhBSGKxGPiUkd32iOTsfaGW43yuJaz1yQpA&usqp=CAU');
-        await StorageGetX().setTokens(token: responseData['token'],);
-        await StorageGetX().setId(id: responseData['id'].toString(),);
+        await StorageGetX.box.write('image', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhhBSGKxGPiUkd32iOTsfaGW43yuJaz1yQpA&usqp=CAU');
+        await StorageGetX.setTokens(token: responseData['token'],);
+        await StorageGetX.setId(id: responseData['id'].toString(),);
        // await StorageGetX().setLogo(Logo: responseData['logo'].toString(),);
-        await StorageGetX().setName(name: responseData['name'].toString(),);
-        await StorageGetX().setEmail(Email: responseData['email'].toString(),);
-        await StorageGetX().setRestaurants(restaurants: responseData['restaurant_id'].toString(),);
-        await StorageGetX().setIsLogin();
+        await StorageGetX.setName(name: responseData['name'].toString(),);
+        await StorageGetX.setEmail(Email: responseData['email'].toString(),);
+        await StorageGetX.setRestaurantsId(restaurants: responseData['restaurant_id'].toString(),);
+        await StorageGetX.setIsLogin();
         print(response.statusCode);
         update();
         if (responseData['type'] == 'RESTAURANT') {

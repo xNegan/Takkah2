@@ -310,7 +310,7 @@ class _BranchsScreenState extends State<BranchsScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    print(StorageGetX().id);
+    print(StorageGetX.id);
     restaurantGetx.to.getDayList();
 
 

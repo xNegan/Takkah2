@@ -36,14 +36,14 @@ class ProfileGetx extends GetxController with Api {
   }
   Future<bool> updateProfile() async {
     try{
-    print(StorageGetX().token);
-    print(StorageGetX().getToken());
+    print(StorageGetX.token);
+    print(StorageGetX.getToken());
     ApiGetX.to.onLoading(isShow: true);
     ///MultiPart request
     var request = http.MultipartRequest('POST', Uri.parse(restaurantUpdateProfile),);
     Map<String, String> headers = {
       //'Authorization': '282|LnKyjXZPntbJWON2dPDR60M0bfXMHd6SmQZjbFow',
-      'Authorization': StorageGetX().token,
+      'Authorization': StorageGetX.token,
       'Accept-Encoding': 'gzip, deflate, br',
       'Connection': 'keep-alive',
       'Accept': '*/*',
@@ -64,7 +64,7 @@ class ProfileGetx extends GetxController with Api {
 
     if(res.statusCode == 200){
       ApiGetX.to.showDialogScsess(Title: 'تم بنجاح');
-      await restaurantGetx.to.getRestaurantById(id: StorageGetX().restaurants/* '1'*/);
+      await restaurantGetx.to.getRestaurantById(id: StorageGetX.restaurants/* '1'*/);
       ApiGetX.to.onLoading(isShow: false);
       Get.back();
       print(res);
@@ -101,14 +101,14 @@ class ProfileGetx extends GetxController with Api {
 
   Future<void> addBranch() async {
     try {
-      print(StorageGetX().id);
+      print(StorageGetX.id);
       ApiGetX.to.onLoading(isShow: true);
       var url = Uri.parse(restaurantUpdateProfile);
       var response = await http.post(
         url,
 
         headers: {
-          'Authorization': StorageGetX().token,
+          'Authorization': StorageGetX.token,
           'Accept-Encoding': 'gzip, deflate, br',
           'Connection': 'keep-alive',
           'Accept': '*/*',

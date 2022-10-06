@@ -5,8 +5,7 @@ import '../uitls/storage_getX.dart';
 
 class LanguageController extends GetxController {
   // var appLocale = 'ar';
-  String appLocale =
-      StorageGetX().box.hasData('lang') ? StorageGetX().box.read('lang') : 'ar';
+  String appLocale = StorageGetX.box.hasData('lang') ? StorageGetX.box.read('lang') : 'ar';
 
   @override
   void onInit() async {

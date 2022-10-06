@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../delivery_screens/main_screen_dl.dart';
+import '../../uitls/storage_getX.dart';
 import '../Auth/loginAs.dart';
+import '../main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,6 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 2), () async {
+      StorageGetX.isLogin?RouteMain()
+          :
       Get.offAll(LginAS());
     });
     return Scaffold(
@@ -71,5 +76,10 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       )
       );
+  }
+  void RouteMain(){
+    if(StorageGetX.Type=='RESTAURANT'){Get.offAll(MainScreen());}
+    if(StorageGetX.Type=='DRIVER'){Get.offAll(MainScreenDl());}
+    if(StorageGetX.Type=='USER'){}
   }
 }
