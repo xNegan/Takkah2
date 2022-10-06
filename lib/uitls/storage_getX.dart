@@ -36,9 +36,8 @@ class StorageGetX {
   Future setName({required String name}) async {
     await box.write('name', name);
   }
-
-  Future setImei({required String Imei}) async {
-    await box.write('imei', Imei);
+  Future setEmail({required String Email}) async {
+    await box.write('email', Email);
   }
 
   Future setId({required String id}) async {
@@ -48,21 +47,6 @@ class StorageGetX {
   Future setImeiIos({required String imeiIos}) async {
     await box.write('imeiIos', imeiIos);
   }
-  //
-  //
-  // Future saveUser(User user) async {
-  //   await box.write('logged_in', true);
-  //   await box.write('id', user.id);
-  //   await box.write('emirateId', user.emirateId);
-  //   await box.write('name', user.name);
-  //   await box.write('imageUrl', user.avatar);
-  //   await box.write('mobile', user.mobile);
-  //   await box.write('city', user.cityName);
-  //   await box.write('gender', user.gender);
-  //   await box.write('token', user.token);
-  //   await box.write('email', user.email);
-  //   await box.write('type', user.type);
-  // }
 
   bool get isShowOnBoarding => box.read('showOnBoarding') ?? false;
   bool get isLogin => box.read('isLogin') ?? false;
@@ -72,8 +56,8 @@ class StorageGetX {
   String get name => box.read('name');
   String get id => box.read('id');
   String get image => box.read('image');
-
-  String get imei => box.read('imei');
+  String get Email => box.read('email');
+  String get Name => box.read('name');
   String get imeiIos => box.read('imei');
   // String get userId => box.read('userId') ?? '';
   // String get name => box.read('name') ?? '';

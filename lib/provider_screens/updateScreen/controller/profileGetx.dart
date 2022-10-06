@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 import '../../../uitls/storage_getX.dart';
 import 'package:takkah/provider_screens/restaurant/restaurantGetx.dart';
 class ProfileGetx extends GetxController with Api {
+
   static ProfileGetx get to => Get.find();
 
   final ImagePicker _pickerLogo = ImagePicker();
@@ -17,6 +18,13 @@ class ProfileGetx extends GetxController with Api {
   String? pathLogo;
   TextEditingController nameRes =TextEditingController();
   TextEditingController EmailRes =TextEditingController();
+  void fillData(){
+    if(StorageGetX().Name!=null&&StorageGetX().Email!=null){
+      nameRes.text=StorageGetX().Name.toString();
+      EmailRes.text=StorageGetX().Email.toString();
+    }
+
+  }
   pickLogo() async{
     final image = await _pickerLogo.pickImage(source: ImageSource.gallery);
     if(image != null){
@@ -30,7 +38,6 @@ class ProfileGetx extends GetxController with Api {
     try{
     print(StorageGetX().token);
     print(StorageGetX().getToken());
-    print(logo!.path);
     ApiGetX.to.onLoading(isShow: true);
     ///MultiPart request
     var request = http.MultipartRequest('POST', Uri.parse(restaurantUpdateProfile),);
@@ -46,9 +53,11 @@ class ProfileGetx extends GetxController with Api {
 
     request.fields.addAll({"name" : jsonEncode(nameRes.text)});
     request.fields.addAll({"email" : jsonEncode(EmailRes.text)});
-    request.files.add(await http.MultipartFile.fromPath('logo',
+    if( logo!=null){
+      request.files.add(await http.MultipartFile.fromPath('logo',
       logo!.path,
-    ));
+    ));}
+
 
     var res = await request.send();
     final respStr = await res.stream.bytesToString();

@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import '../../../delivery_screens/main_screen_dl.dart';
 import '../../../global_getX/api_getX.dart';
 import '../../../global_widgets/text_custom.dart';
+import '../../../preferences/user_preferences.dart';
 import '../../../uitls/api.dart';
 import '../../../uitls/storage_getX.dart';
 import '../../main_screen.dart';
@@ -58,40 +59,23 @@ class LoginGetX extends GetxController with Api {
       var responsestatus = jsonDecode(response.body)['status'];
       print(response.body);
       User user  = User.fromJson(jsonDecode(response.body));
-      // if(user != null){
-      //   UserPreferences().saveStore(user);
-      //   print("ID Store:: ${user.data!.restaurant_id}");
-      //   print("ID:: ${user.data!.token}");
-      // }
       print(response.statusCode);
       print(user.data);
       if (responsestatus == 200) {
         if(user != null){
+          UserPreferences().saveStore(user);
           print("ID Store:: ${user.data!.restaurant_id}");
           print("ID:: ${user.data!.token}");
         }
         ApiGetX.to.onLoading(isShow: false);
 
-        print(
-          responseData['token'],
-        );
-        print(responseData['id']);
-
-        await StorageGetX().box.write('image',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhhBSGKxGPiUkd32iOTsfaGW43yuJaz1yQpA&usqp=CAU');
-
-        await StorageGetX().setTokens(
-          token: responseData['token'],
-        );
-        await StorageGetX().setId(
-          id: responseData['id'].toString(),
-        );
-        await StorageGetX().setName(
-          name: responseData['name'].toString(),
-        );
-        await StorageGetX().setRestaurants(
-          restaurants: responseData['restaurant_id'].toString(),
-        );
+        await StorageGetX().box.write('image', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhhBSGKxGPiUkd32iOTsfaGW43yuJaz1yQpA&usqp=CAU');
+        await StorageGetX().setTokens(token: responseData['token'],);
+        await StorageGetX().setId(id: responseData['id'].toString(),);
+       // await StorageGetX().setLogo(Logo: responseData['logo'].toString(),);
+        await StorageGetX().setName(name: responseData['name'].toString(),);
+        await StorageGetX().setEmail(Email: responseData['email'].toString(),);
+        await StorageGetX().setRestaurants(restaurants: responseData['restaurant_id'].toString(),);
         await StorageGetX().setIsLogin();
         print(response.statusCode);
         update();
